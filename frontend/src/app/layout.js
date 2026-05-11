@@ -1,5 +1,15 @@
 import "./globals.css";
+import { Geist, Playfair_Display } from "next/font/google";
 
+const geist = Geist({ 
+  subsets: ['latin'],
+  variable: '--font-geist',
+})
+
+const playfair = Playfair_Display({ 
+  subsets: ['latin'],
+  variable: '--font-playfair',
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -10,9 +20,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="h-full antialiased"
+      className={`${geist.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }

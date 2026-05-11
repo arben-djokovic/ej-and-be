@@ -1,4 +1,5 @@
 import { FeaturedProperties } from "@/components/FeaturedProperties";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/header/Header";
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
@@ -14,6 +15,7 @@ export default function Home() {
         <Stats />
         <WhyUs />
       </div>
+      <Footer />
     </>
   );
 }

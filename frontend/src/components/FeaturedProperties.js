@@ -2,6 +2,7 @@ import React from 'react'
 import { Shape } from './Shape'
 import { Button } from './Button'
 import { ArrowRight } from 'lucide-react'
+import { PropertyCard } from './PropertyCard'
 
 export const FeaturedProperties = () => {
   return (
@@ -14,7 +15,8 @@ export const FeaturedProperties = () => {
             <p className="text-center text-md md:text-lg">Izdvojene nekretnine sa našeg sajta</p>
         </div>
         
-        <div>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
+            {[1,2,3,4,5,6].map((item) => (<PropertyCard key={item} />))}
         </div>
 
         <div className='flex items-center w-full justify-center'>

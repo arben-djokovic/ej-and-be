@@ -14,7 +14,7 @@ export const Header = () => {
     useEffect(() => {
         setIsMobileOpen(false)
     }, [pathname])
-  return (<div className='sticky w-full top-0 left-0 z-100 '>
+  return (<div className='sticky w-full top-0 left-0 z-100 shadow-lg'>
     <div className='h-21 bg-primary text-white p-4 flex items-center justify-around relative z-10' >
         <Link href="/">
             <Image src="/ej&be-logo.webp" alt="Logo" height={170} width={170} />

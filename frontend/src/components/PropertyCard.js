@@ -6,7 +6,7 @@ export const PropertyCard = () => {
   const randomNumber = Math.floor(Math.random() * 1000) + 1;
   const img = randomNumber % 2 === 0 ? "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop" : "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop"
   return (
-        <Link href={`/nekretnine/1`} className="block group text-gray-700">
+        <Link href={`/properties/1`} className="block group text-gray-700">
       <div className="bg-white rounded-xl shadow-md overflow-hidden group hover:shadow-xl transition-shadow duration-300">
         {/* Image Container */}
         <div className="relative h-56 overflow-hidden">

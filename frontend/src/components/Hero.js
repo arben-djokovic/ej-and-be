@@ -34,7 +34,7 @@ export const Hero = () => {
                 Gori
               </p>
 
-              <Button link="/nekretnine">
+              <Button link="/properties">
                 <p className='px-8 py-4 flex items-center gap-2'>
                   <Search className="h-5 w-5" />
                   Pretraži nekretnine

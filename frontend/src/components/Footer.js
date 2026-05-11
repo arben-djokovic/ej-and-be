@@ -38,7 +38,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/nekretnine"
+                  href="/properties"
                   className="text-white/70 hover:text-white transition-colors"
                 >
                     Nekretnine
@@ -46,7 +46,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/o-nama"
+                  href="/about"
                   className="text-white/70 hover:text-white transition-colors"
                 >
                     O nama
@@ -54,7 +54,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/kontakt"
+                  href="/contact"
                   className="text-white/70 hover:text-white transition-colors"
                 >
                     Kontakt
@@ -69,7 +69,7 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/nekretnine?type=apartment"
+                  href="/properties?type=apartment"
                   className="text-white/70 hover:text-white transition-colors"
                 >
                   Stan
@@ -77,7 +77,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/nekretnine?type=house"
+                  href="/properties?type=house"
                   className="text-white/70 hover:text-white transition-colors"
                 >
                   Kuća
@@ -85,7 +85,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/nekretnine?type=land"
+                  href="/properties?type=land"
                   className="text-white/70 hover:text-white transition-colors"
                 >
                   Plac
@@ -93,7 +93,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/nekretnine?type=commercial"
+                  href="/properties?type=commercial"
                   className="text-white/70 hover:text-white transition-colors"
                 >
                   Poslovni prostor

@@ -1,5 +1,4 @@
 'use client';
-import { Button } from "@/components/Button";
 import ContactForm from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/header/Header";
@@ -23,7 +22,7 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="space-y-8">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center shrink-0">
                   <MapPin className="h-5 w-5 text-[#c9a962]" />
                 </div>
                 <div>
@@ -37,7 +36,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center shrink-0">
                   <Phone className="h-5 w-5 text-[#c9a962]" />
                 </div>
                 <div>
@@ -49,7 +48,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center shrink-0">
                   <Mail className="h-5 w-5 text-[#c9a962]" />
                 </div>
                 <div>
@@ -59,7 +58,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-[#c9a962]/10 flex items-center justify-center shrink-0">
                   <Clock className="h-5 w-5 text-[#c9a962]" />
                 </div>
                 <div>

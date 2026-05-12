@@ -20,7 +20,7 @@ export const FeaturedProperties = () => {
         </div>
 
         <div className='flex items-center w-full justify-center'>
-            <Button link="/nekretnine">
+            <Button link="/properties">
                 <p className='text-sm flex gap-2 items-center px-3 py-2'>
                     Ucitaj više <ArrowRight className='h-5 w-5' />
                 </p>

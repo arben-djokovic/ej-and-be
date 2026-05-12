@@ -137,7 +137,7 @@ export const Footer = () => {
             <p className="text-white/50 text-sm">
               Web development by{" "}
               <Link href="https://www.linkedin.com/in/arben-djokovic" className="text-[#c9a962]" target="_blank">
-                Arben Djokovic
+                Arben Ðoković
               </Link>
             </p>
           </div>

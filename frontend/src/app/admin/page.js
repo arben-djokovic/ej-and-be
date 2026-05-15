@@ -1,3 +1,4 @@
+import { AdminHeader } from '@/components/admin/AdminHeader';
 import { Building2, TrendingUp, Eye, Plus } from 'lucide-react'
 import Link from 'next/link'
 
@@ -6,6 +7,7 @@ export default async function AdminDashboard() {
     const forSale = 80;
     const forRent = 40;
     const featured = 15;
+
     const recentProperties = [
         { id: 1, title: 'Luksuzni Stan u Centru', type: 'apartment', city: 'Podgorica', price: 150000, status: 'sale', created_at: '2024-05-01' },
         { id: 2, title: 'Porodična Kuća sa Dvorištem', type: 'house', city: 'Nikšić', price: 200000, status: 'sale', created_at: '2024-05-03' },
@@ -52,19 +54,7 @@ export default async function AdminDashboard() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-[#1a2744]">Dashboard</h1>
-          <p className="text-gray-500 mt-1">Pregled poslovanja</p>
-        </div>
-        <Link
-          href="/admin/nekretnine/nova"
-          className="inline-flex items-center gap-2 bg-[#c9a962] text-white px-4 py-2 rounded-lg hover:bg-[#b8944f] transition-colors"
-        >
-          <Plus className="h-5 w-5" />
-          Dodaj Nekretninu
-        </Link>
-      </div>
+      <AdminHeader title="Dashboard" subtitle="Pregled statistika i nedavno dodatih nekretnina" />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -92,7 +82,7 @@ export default async function AdminDashboard() {
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold text-[#1a2744]">Nedavno Dodato</h2>
             <Link
-              href="/admin/nekretnine"
+              href="/admin/properties"
               className="text-[#c9a962] hover:underline text-sm font-medium"
             >
               Vidi sve
@@ -104,7 +94,7 @@ export default async function AdminDashboard() {
             recentProperties.map((property) => (
               <Link
                 key={property.id}
-                href={`/admin/nekretnine/${property.id}`}
+                href={`/admin/properties/${property.id}`}
                 className="flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
               >
                 <div>
@@ -131,7 +121,7 @@ export default async function AdminDashboard() {
               <Building2 className="h-12 w-12 mx-auto mb-4 text-gray-300" />
               <p>Nema nekretnina</p>
               <Link
-                href="/admin/nekretnine/nova"
+                href="/admin/properties/new"
                 className="text-[#c9a962] hover:underline mt-2 inline-block"
               >
                 Dodaj prvu nekretninu

@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { 
   LayoutDashboard, 
   Building2, 
@@ -14,13 +14,12 @@ import {
 
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/nekretnine', label: 'Nekretnine', icon: Building2 },
-  { href: '/admin/nekretnine/nova', label: 'Dodaj Nekretninu', icon: Plus },
+  { href: '/admin/properties', label: 'Nekretnine', icon: Building2 },
+  { href: '/admin/properties/new', label: 'Dodaj Nekretninu', icon: Plus },
 ]
 
 export function AdminSidebar({ user }) {
   const pathname = usePathname()
-  const router = useRouter()
 
   const handleLogout = async () => {
   }

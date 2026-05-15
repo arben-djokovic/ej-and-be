@@ -84,14 +84,14 @@ export default async function AdminPropertiesPage() {
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-end gap-2">
                       <Link
-                        href={`/nekretnine/${property.id}`}
+                        href={`/properties/${property.id}`}
                         className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="Pogledaj"
                       >
                         <Eye className="h-5 w-5" />
                       </Link>
                       <Link
-                        href={`/admin/nekretnine/${property.id}`}
+                        href={`/admin/properties/${property.id}`}
                         className="p-2 text-gray-400 hover:text-[#c9a962] hover:bg-amber-50 rounded-lg transition-colors"
                         title="Izmijeni"
                       >

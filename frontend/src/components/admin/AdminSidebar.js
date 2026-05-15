@@ -8,8 +8,12 @@ import {
   Plus, 
   LogOut,
   Home,
-  User
+  User,
+  Menu,
+  X,
+  ArrowLeftCircle
 } from 'lucide-react'
+import { useState } from 'react'
 
 
 const navItems = [
@@ -20,12 +24,20 @@ const navItems = [
 
 export function AdminSidebar({ user }) {
   const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleLogout = async () => {
   }
 
-  return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-[#1a2744] text-white flex flex-col">
+  return (<>
+    {/* Mobile Menu Button */}
+    <button
+      onClick={() => setIsOpen(!isOpen)}
+      className="md:hidden fixed top-4 left-4 z-50 p-2 rounded-md text-white bg-[#1a2744]/80 hover:bg-[#1a2744] transition-colors"
+    >
+      {isOpen ? <X size={24} /> : <Menu size={24} />}
+    </button>
+    <aside className={`${isOpen ? 'block' : 'hidden md:block'} fixed left-0 top-0 min-h-screen h-full w-64 bg-[#1a2744] text-white flex flex-col`}>
       {/* Logo */}
       <div className="p-6 border-b border-white/10">
         <Link href="/admin">
@@ -41,7 +53,7 @@ export function AdminSidebar({ user }) {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4 space-y-1">
+      <nav className="flex-1 p-4 space-y-1">  
         {navItems.map((item) => {
           const Icon = item.icon
           const isActive = pathname === item.href || 
@@ -89,5 +101,5 @@ export function AdminSidebar({ user }) {
         </button>
       </div>
     </aside>
-  )
+    </>)
 }

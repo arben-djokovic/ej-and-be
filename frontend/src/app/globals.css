@@ -9,3 +9,18 @@
 a:hover, button:hover {
   cursor: pointer;
 }
+input, textarea, select {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.selectLanguage {
+  border: none;
+  
+}
+
+input[type="checkbox"], input[type="radio"] {
+  width: auto;
+}

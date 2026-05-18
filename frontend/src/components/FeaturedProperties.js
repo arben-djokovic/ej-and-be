@@ -3,8 +3,10 @@ import { Shape } from './Shape'
 import { Button } from './Button'
 import { ArrowRight } from 'lucide-react'
 import { PropertyCard } from './PropertyCard'
+import { getFeaturedProperties } from '@/app/actions/PropertyActions'
 
-export const FeaturedProperties = () => {
+export const FeaturedProperties = async () => {
+    const properties = await getFeaturedProperties();
   return (
     <section className='px-10 py-20  flex flex-col gap-10'>
         <div className='font-serif flex flex-col items-center justify-center gap-2'>
@@ -16,13 +18,13 @@ export const FeaturedProperties = () => {
         </div>
         
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-            {[1,2,3,4,5,6].map((item) => (<PropertyCard key={item} />))}
+            {properties.map((property) => (<PropertyCard key={property._id} property={property} />))}
         </div>
 
         <div className='flex items-center w-full justify-center'>
             <Button link="/properties">
                 <p className='text-sm flex gap-2 items-center px-3 py-2'>
-                    Ucitaj više <ArrowRight className='h-5 w-5' />
+                    Pogledaj više <ArrowRight className='h-5 w-5' />
                 </p>
             </Button>
         </div>

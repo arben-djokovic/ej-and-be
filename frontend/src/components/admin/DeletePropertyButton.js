@@ -2,20 +2,17 @@
 
 import { useState } from 'react'
 import { Trash2, Loader2 } from 'lucide-react'
+import { deleteProperty } from '@/app/actions/PropertyActions'
 
 
-export function DeletePropertyButton({ propertyTitle }) {
+export function DeletePropertyButton({ propertyTitle, propertyId }) {
   const [loading, setLoading] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
 
   const handleDelete = async () => {
     setLoading(true)
     setShowConfirm(true)
-
-    setTimeout(() => {
-        setLoading(false)
-        setShowConfirm(false)
-    }, 1000);
+    await deleteProperty(propertyId)
   }
 
   if (showConfirm) {

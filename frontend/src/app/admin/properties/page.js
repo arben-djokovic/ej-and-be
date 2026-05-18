@@ -1,14 +1,11 @@
+import { getProperties } from '@/app/actions/PropertyActions'
 import { AdminHeader } from '@/components/admin/AdminHeader'
 import { DeletePropertyButton } from '@/components/admin/DeletePropertyButton'
 import { Building2, Plus, Pencil, Eye } from 'lucide-react'
 import Link from 'next/link'
 
 export default async function AdminPropertiesPage() {
-    const properties = [
-        { id: 1, title: 'Luksuzni Stan u Centru', type: 'apartment', city: 'Podgorica', price: 150000, status: 'sale', images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop'] },
-        { id: 2, title: 'Porodična Kuća sa Dvorištem', type: 'house', city: 'Nikšić', price: 200000, status: 'sale', images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop'] },
-        { id: 3, title: 'Poslovni Prostor u Blizini', type: 'commercial', city: 'Podgorica', price: 3000, status: 'rent', images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop'] },
-    ]
+    const properties = await getProperties()
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat('de-DE').format(price) + ' EUR'
@@ -29,7 +26,8 @@ export default async function AdminPropertiesPage() {
       apartment: 'Stan',
       house: 'Kuca',
       land: 'Plac',
-      commercial: 'Poslovni prostor'
+      commercial: 'Poslovni prostor',
+      villa: 'Vila'
     }
     return types[type] || type
   }
@@ -53,12 +51,12 @@ export default async function AdminPropertiesPage() {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {properties.map((property) => (
-                <tr key={property.id} className="hover:bg-gray-50">
+                <tr key={property._id} className="hover:bg-gray-50">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       {property.images && property.images[0] ? (
                         <img
-                          src={property.images[0]}
+                          src={property.images[0].url}
                           alt={property.title}
                           className="w-12 h-12 rounded-lg object-cover"
                         />
@@ -84,20 +82,20 @@ export default async function AdminPropertiesPage() {
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-end gap-2">
                       <Link
-                        href={`/properties/${property.id}`}
+                        href={`/properties/${property._id}`}
                         className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="Pogledaj"
                       >
                         <Eye className="h-5 w-5" />
                       </Link>
                       <Link
-                        href={`/admin/properties/${property.id}`}
+                        href={`/admin/properties/${property._id}`}
                         className="p-2 text-gray-400 hover:text-[#c9a962] hover:bg-amber-50 rounded-lg transition-colors"
                         title="Izmijeni"
                       >
                         <Pencil className="h-5 w-5" />
                       </Link>
-                      <DeletePropertyButton propertyId={property.id} propertyTitle={property.title} />
+                      <DeletePropertyButton propertyId={property._id} propertyTitle={property.title} />
                     </div>
                   </td>
                 </tr>

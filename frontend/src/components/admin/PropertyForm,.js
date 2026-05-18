@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { X, Upload, Loader2 } from 'lucide-react'
+import { createProperty, updateProperty } from '@/app/actions/PropertyActions'
 
 const cities = ['Podgorica', 'Budva', 'Tivat', 'Kotor', 'Bar', 'Herceg Novi', 'Ulcinj', 'Niksic', 'Cetinje']
 
@@ -77,23 +78,21 @@ export function PropertyForm({ property, mode }) {
         featured: formData.featured,
       }
 
-    //   if (mode === 'create') {
-    //     const { error: insertError } = await supabase
-    //       .from('properties')
-    //       .insert(propertyData)
-
-    //     if (insertError) throw insertError
-    //   } else {
-    //     const { error: updateError } = await supabase
-    //       .from('properties')
-    //       .update(propertyData)
-    //       .eq('id', property!.id)
-
-    //     if (updateError) throw updateError
-    //   }
-
-      router.push('/admin/nekretnine')
-      router.refresh()
+      if (mode === 'create') {
+        const actionResponse = await createProperty(propertyData)
+        if (!actionResponse.success){
+          console.error('Failed to create property:', actionResponse)
+        }else if(actionResponse.property && actionResponse.property._id){
+          router.push('/properties/' + actionResponse.property._id)
+        }
+      } else {
+        const actionResponse = await updateProperty(property._id, propertyData)
+        if (!actionResponse.success){
+          console.error('Failed to update property:', actionResponse)
+        }else{
+          router.push('/admin/properties/')
+        }
+      }
     } catch (err) {
       console.error('Error saving property:', err)
       setError(err instanceof Error ? err.message : 'Greska prilikom cuvanja')
@@ -202,6 +201,8 @@ export function PropertyForm({ property, mode }) {
               <option value="house">Kuca</option>
               <option value="land">Plac</option>
               <option value="commercial">Poslovni prostor</option>
+              <option value="villa">Vila</option>
+              <option value="garage">Garaza</option>
             </select>
           </div>
 
@@ -415,7 +416,7 @@ export function PropertyForm({ property, mode }) {
               {images.map((img, index) => (
                 <div key={index} className="relative group">
                   <img
-                    src={img}
+                    src={img.url}
                     alt={`Slika ${index + 1}`}
                     className="w-full h-32 object-cover rounded-lg"
                   />

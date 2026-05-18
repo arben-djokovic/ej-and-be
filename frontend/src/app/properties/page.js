@@ -5,8 +5,12 @@ import { PageHeader } from '@/components/PageHeader'
 import { PropertiesFilters } from '@/components/PropertiesFilters'
 import { PropertyCard } from '@/components/PropertyCard'
 import React from 'react'
+import { getProperties } from '../actions/PropertyActions'
 
-export default function Properties() {
+export default async function Properties() {
+
+  const properties = await getProperties();
+
   return (<>
     <Header />
     <div>
@@ -14,8 +18,8 @@ export default function Properties() {
         <div className='mb-10'>
           <PropertiesFilters />
           <section className='pb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4'>
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <PropertyCard key={item} />
+            {properties.map((property) => (
+              <PropertyCard key={property._id} property={property} />
             ))}
           </section>
           <div className='flex justify-center'>

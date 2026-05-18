@@ -2,22 +2,18 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { PropertyForm } from '@/components/admin/PropertyForm,'
+import { getPropertyById } from '@/app/actions/PropertyActions'
 
 export default async function AdminPropertyPage({ params }) {
   const { id } = await params
   const mode = id === 'new' ? 'create' : 'edit'
 
-  const property = mode === 'create' ? {} : {
-    id: 1,
-    title: 'Luksuzni Stan u Centru',
-    type: 'apartment',
-    city: 'Podgorica',
-    price: 150000,
-    status: 'sale',
-    images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop'],
+  let property
+  if (mode === 'edit') {
+    property = await getPropertyById(id)
   }
 
-  if (!property) {
+  if (mode === 'edit' && !property) {
     notFound()
   }
 
@@ -32,7 +28,7 @@ export default async function AdminPropertyPage({ params }) {
           Nazad na listu
         </Link>
         <h1 className="text-3xl font-bold text-[#1a2744]">{mode === 'create' ? 'Dodaj Nekretninu' : 'Izmijeni Nekretninu'}</h1>
-        <p className="text-gray-500 mt-1">{property.title}</p>
+        <p className="text-gray-500 mt-1">{property?.title}</p>
       </div>
 
       <PropertyForm property={property} mode={mode} />

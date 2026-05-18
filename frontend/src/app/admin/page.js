@@ -1,23 +1,17 @@
 import { AdminHeader } from '@/components/admin/AdminHeader';
 import { Building2, TrendingUp, Eye, Plus } from 'lucide-react'
+import { get } from 'mongoose';
 import Link from 'next/link'
+import { getDashboardData } from '../actions/PropertyActions';
 
 export default async function AdminDashboard() {
-    const totalProperties = 120;
-    const forSale = 80;
-    const forRent = 40;
-    const featured = 15;
+  const { totalProperties, totalSales, totalRentals, recentProperties, featuredProperties } = await getDashboardData();
 
-    const recentProperties = [
-        { id: 1, title: 'Luksuzni Stan u Centru', type: 'apartment', city: 'Podgorica', price: 150000, status: 'sale', created_at: '2024-05-01' },
-        { id: 2, title: 'Porodična Kuća sa Dvorištem', type: 'house', city: 'Nikšić', price: 200000, status: 'sale', created_at: '2024-05-03' },
-        { id: 3, title: 'Poslovni Prostor u Blizini', type: 'commercial', city: 'Podgorica', price: 3000, status: 'rent', created_at: '2024-05-05' },
-    ]
   const stats = [
     { label: 'Ukupno Nekretnina', value: totalProperties || 0, icon: Building2, color: 'bg-blue-500' },
-    { label: 'Na Prodaju', value: forSale || 0, icon: TrendingUp, color: 'bg-green-500' },
-    { label: 'Za Izdavanje', value: forRent || 0, icon: Eye, color: 'bg-purple-500' },
-    { label: 'Istaknute', value: featured || 0, icon: Plus, color: 'bg-[#c9a962]' },
+    { label: 'Na Prodaju', value: totalSales || 0, icon: TrendingUp, color: 'bg-green-500' },
+    { label: 'Za Izdavanje', value: totalRentals || 0, icon: Eye, color: 'bg-purple-500' },
+    { label: 'Istaknute', value: featuredProperties.length || 0, icon: Plus, color: 'bg-[#c9a962]' },
   ]
 
   const formatPrice = (price) => {
@@ -25,6 +19,7 @@ export default async function AdminDashboard() {
   }
 
   const formatDate = (date) => {
+    console.log('formatDate input:', date);
     return new Date(date).toLocaleDateString('sr-Latn-ME', {
       day: '2-digit',
       month: '2-digit',
@@ -52,16 +47,18 @@ export default async function AdminDashboard() {
     return types[type] || type
   }
 
+
   return (
     <div>
       <AdminHeader title="Dashboard" subtitle="Pregled statistika i nedavno dodatih nekretnina" />
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {stats.map((stat) => {
+        {stats.map((stat, i) => {
           const Icon = stat.icon
+          console.log(recentProperties[0]);
           return (
-            <div key={stat.label} className="bg-white rounded-xl shadow-sm p-6">
+            <div key={i} className="bg-white rounded-xl shadow-sm p-6">
               <div className="flex items-center gap-4">
                 <div className={`${stat.color} p-3 rounded-lg`}>
                   <Icon className="h-6 w-6 text-white" />
@@ -93,8 +90,8 @@ export default async function AdminDashboard() {
           {recentProperties && recentProperties.length > 0 ? (
             recentProperties.map((property) => (
               <Link
-                key={property.id}
-                href={`/admin/properties/${property.id}`}
+                key={property._id}
+                href={`/admin/properties/${property._id}`}
                 className="flex items-center justify-between p-6 hover:bg-gray-50 transition-colors"
               >
                 <div>
@@ -110,7 +107,7 @@ export default async function AdminDashboard() {
                       {getStatusText(property.status)}
                     </span>
                     <span className="text-gray-400 text-xs">
-                      {formatDate(property.created_at)}
+                      {formatDate(property.createdAt)}
                     </span>
                   </div>
                 </div>

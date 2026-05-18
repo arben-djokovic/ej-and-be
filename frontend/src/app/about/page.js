@@ -6,7 +6,8 @@ import { WhyUs } from "@/components/WhyUs";
 import Image from "next/image";
 import React from "react";
 
-export default function About() {
+export default async function About() {
+  
   return (
     <>
       <Header />

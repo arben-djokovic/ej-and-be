@@ -5,10 +5,19 @@ import ShowProperties from '@/components/properties/ShowProperties'
 import { getProperties } from '@/app/actions/PropertyActions'
 
 export default async function Properties({ searchParams }) {
+  let data;
+  let initialProperties = []
+  let hasMore = false
   const params = await searchParams;
-  const res = await getProperties({ page: 1, status: params.status, type: params.type, city: params.city, rooms: params.rooms, minPrice: params.minPrice, maxPrice: params.maxPrice });
-  const initialProperties = res.properties;
-  const hasMore = res.hasMore;
+
+  try{
+    data = await getProperties({ page: 1, status: params.status, type: params.type, city: params.city, rooms: params.rooms, minPrice: params.minPrice, maxPrice: params.maxPrice });
+    initialProperties = data.properties;
+    hasMore = data.hasMore;
+  }catch(err){
+    throw err
+  }
+  
   return (<>
     <Header />
     <div>

@@ -13,7 +13,6 @@ import {
   Clock,
   Building2,
 } from "lucide-react";
-import { useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -42,7 +41,7 @@ export function PropertyDetailView( { property } ) {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2 w-full h-100 bg-[rgba(0,0,0,0.8)] overflow-hidden"
       >
-        {property.images.length === 0 && (
+        {property?.images.length === 0 && (
           <SwiperSlide>
             <div className="h-full w-full flex items-center justify-center">
               <div className="h-[90%] w-[90%] rounded-lg bg-gray-100 flex items-center justify-center">
@@ -51,7 +50,7 @@ export function PropertyDetailView( { property } ) {
             </div>
           </SwiperSlide>
         )}
-        {property.images.map((image, index) => (
+        {property?.images.map((image, index) => (
           <SwiperSlide key={index}>
             <div className="h-full flex items-center justify-center">
               <img className="max-h-full max-w-full mx-auto" src={image.url} />
@@ -64,12 +63,12 @@ export function PropertyDetailView( { property } ) {
             <div className="absolute top-4 left-4 z-2">
               <span
                 className={`px-4 py-2 rounded-full text-sm font-semibold bg-[#c9a962] text-white
-                  ${property.status === 'sale'
+                  ${property?.status === 'sale'
                    ? 'bg-[#c9a962] text-white'
                    : 'bg-[#1a2744] text-white'
                   }`}
               >
-                {property.status === 'sale' ? 'Prodaja' : 'Izdavanje'}
+                {property?.status === 'sale' ? 'Prodaja' : 'Izdavanje'}
               </span>
             </div>
           </div>
@@ -84,39 +83,39 @@ export function PropertyDetailView( { property } ) {
             <div>
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <span className="bg-[#1a2744]/10 text-[#1a2744] px-3 py-1 rounded-full text-sm font-medium">
-                  {property.type}
+                  {property?.type}
                 </span>
                 <span className="flex items-center gap-1">
                   <MapPin className="h-4 w-4" />
-                  {property.address}, {property.city}
+                  {property?.address}, {property?.city}
                 </span>
               </div>
               <h1 className="font-serif text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-                {property.title}
+                {property?.title}
               </h1>
-              <p className="text-3xl font-bold text-[#c9a962]">{property.price}</p>
+              <p className="text-3xl font-bold text-[#c9a962]">{property?.price}</p>
             </div>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="bg-muted/50 rounded-xl p-4 text-center">
                 <Maximize className="h-6 w-6 mx-auto mb-2 text-[#c9a962]" />
-                <p className="text-2xl font-bold text-[#1a2744]">{property.area}</p>
+                <p className="text-2xl font-bold text-[#1a2744]">{property?.area}</p>
                 <p className="text-sm text-muted-foreground">m²</p>
               </div>
               <div className="bg-muted/50 rounded-xl p-4 text-center">
                 <Bed className="h-6 w-6 mx-auto mb-2 text-[#c9a962]" />
-                <p className="text-2xl font-bold text-[#1a2744]">{property.rooms}</p>
+                <p className="text-2xl font-bold text-[#1a2744]">{property?.rooms}</p>
                 <p className="text-sm text-muted-foreground">Sobe</p>
               </div>
               <div className="bg-muted/50 rounded-xl p-4 text-center">
                 <Bath className="h-6 w-6 mx-auto mb-2 text-[#c9a962]" />
-                <p className="text-2xl font-bold text-[#1a2744]">{property.bathrooms}</p>
+                <p className="text-2xl font-bold text-[#1a2744]">{property?.bathrooms}</p>
                 <p className="text-sm text-muted-foreground">Kupatila</p>
               </div>
               <div className="bg-muted/50 rounded-xl p-4 text-center">
                 <Building className="h-6 w-6 mx-auto mb-2 text-[#c9a962]" />
-                <p className="text-2xl font-bold text-[#1a2744]">{property.floor}/{property.total_floors}</p>
+                <p className="text-2xl font-bold text-[#1a2744]">{property?.floor}/{property?.total_floors}</p>
                 <p className="text-sm text-muted-foreground">Sprat</p>
               </div>
             </div>
@@ -127,7 +126,7 @@ export function PropertyDetailView( { property } ) {
                 Opis nekretnine
               </h2>
               <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                {property.description}
+                {property?.description}
               </p>
             </div>
 
@@ -141,7 +140,7 @@ export function PropertyDetailView( { property } ) {
                   <Maximize className="h-5 w-5 text-[#c9a962]" />
                   <div>
                     <p className="text-sm text-muted-foreground">Površina</p>
-                    <p className="font-semibold text-[#1a2744]">{property.area} m²</p>
+                    <p className="font-semibold text-[#1a2744]">{property?.area} m²</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-xl">
@@ -150,21 +149,21 @@ export function PropertyDetailView( { property } ) {
                     <p className="text-sm text-muted-foreground">
                       Godina izgradnje
                     </p>
-                    <p className="font-semibold text-[#1a2744]">{property.year_built}</p>
+                    <p className="font-semibold text-[#1a2744]">{property?.year_built}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-xl">
                   <Car className="h-5 w-5 text-[#c9a962]" />
                   <div>
                     <p className="text-sm text-muted-foreground">Parking</p>
-                    <p className="font-semibold text-[#1a2744]">{property.parking ? 'da' : 'ne'}</p>
+                    <p className="font-semibold text-[#1a2744]">{property?.parking ? 'da' : 'ne'}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-xl">
                   <Flame className="h-5 w-5 text-[#c9a962]" />
                   <div>
                     <p className="text-sm text-muted-foreground">Grijanje</p>
-                    <p className="font-semibold text-[#1a2744]">{property.heating ? 'da' : 'ne'}</p>
+                    <p className="font-semibold text-[#1a2744]">{property?.heating ? 'da' : 'ne'}</p>
                   </div>
                 </div>
               </div>

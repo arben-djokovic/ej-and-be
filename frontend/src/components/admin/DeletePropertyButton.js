@@ -12,7 +12,13 @@ export function DeletePropertyButton({ propertyTitle, propertyId }) {
   const handleDelete = async () => {
     setLoading(true)
     setShowConfirm(true)
-    await deleteProperty(propertyId)
+    try{
+      const res = await deleteProperty(propertyId)
+      if(!res.success) throw new Error(res.error || 'Unknown error')
+    }catch(error){
+      alert('Doslo je do greske prilikom brisanja nekretnine. Molimo pokusajte ponovo.')
+      console.error('Error deleting property:', error)
+    }
   }
 
   if (showConfirm) {

@@ -6,7 +6,14 @@ import { PropertyCard } from './PropertyCard'
 import { getFeaturedProperties } from '@/app/actions/PropertyActions'
 
 export const FeaturedProperties = async () => {
-    const properties = await getFeaturedProperties();
+    let properties = [];
+
+    try{
+        const data = await getFeaturedProperties()
+        properties = data
+    }catch(err){
+        throw err
+    }
   return (
     <section className='px-10 py-20  flex flex-col gap-10'>
         <div className='font-serif flex flex-col items-center justify-center gap-2'>

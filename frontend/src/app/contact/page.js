@@ -7,8 +7,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 
 export default function Contact() {
-
-  const handleSubmit = (e) => {}
+  
   return (
     <>
       <Header />

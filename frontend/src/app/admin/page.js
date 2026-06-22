@@ -1,11 +1,16 @@
 import { AdminHeader } from '@/components/admin/AdminHeader';
 import { Building2, TrendingUp, Eye, Plus } from 'lucide-react'
-import { get } from 'mongoose';
 import Link from 'next/link'
 import { getDashboardData } from '../actions/PropertyActions';
 
 export default async function AdminDashboard() {
-  const { totalProperties, totalSales, totalRentals, recentProperties, featuredProperties } = await getDashboardData();
+    let data
+  try {
+    data = await getDashboardData()
+  } catch (error) {
+    throw error
+  }
+  const { totalProperties, totalSales, totalRentals, recentProperties, featuredProperties } = data;
 
   const stats = [
     { label: 'Ukupno Nekretnina', value: totalProperties || 0, icon: Building2, color: 'bg-blue-500' },

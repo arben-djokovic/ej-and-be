@@ -12,7 +12,6 @@ export function PropertyForm({ property, mode }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [images, setImages] = useState(property?.images || [])
-  const [newImageUrl, setNewImageUrl] = useState('')
 
   const [formData, setFormData] = useState({
     title: property?.title || '',
@@ -90,11 +89,13 @@ export function PropertyForm({ property, mode }) {
         const actionResponse = await updateProperty(property._id, propertyData)
         if (!actionResponse.success){
           console.error('Failed to update property:', actionResponse)
+          alert('Doslo je do greske prilikom azuriranja nekretnine. Molimo pokusajte ponovo.')
         }else{
           router.push('/admin/properties/')
         }
       }
     } catch (err) {
+      alert('Doslo je do greske prilikom cuvanja nekretnine. Molimo pokusajte ponovo.')
       console.error('Error saving property:', err)
       setError(err instanceof Error ? err.message : 'Greska prilikom cuvanja')
     } finally {

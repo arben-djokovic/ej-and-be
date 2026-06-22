@@ -39,44 +39,77 @@ export async function createProperty(data) {
 
 // Obrisi
 export async function deleteProperty(id) {
-  await connectDB();
-  await Property.findByIdAndDelete(id);
-  revalidatePath('/admin/properties');
-  return { success: true };
+  try{
+    if(!id) return { success: false, error: 'ID is required' };
+      await connectDB();
+      await Property.findByIdAndDelete(id);
+      revalidatePath('/admin/properties');
+      return { success: true };
+  }catch(err){
+    console.error('Error deleting property:', err);
+    return { success: false, error: err.message };
+  }
 }
 
 // Update
 export async function updateProperty(id, data) {
-  await connectDB();
-  await Property.findByIdAndUpdate(id, data);
-  return { success: true };
+  try{
+    await connectDB();
+    await Property.findByIdAndUpdate(id, data);
+    return { success: true };
+  }catch(err){
+    console.error('Error updating property:', err);
+    return { success: false, error: err.message };
+  }
 }
 
 export async function getPropertyById(id) {
-  await connectDB();
-  const property = await Property.findById(id).lean();
-  if (!property) return null;
-  return JSON.parse(JSON.stringify(property));
+  try{
+    if(!id) return null;
+    await connectDB();
+    const property = await Property.findById(id).lean();
+    if (!property) return null;
+    return JSON.parse(JSON.stringify(property));
+  }catch(err){
+    console.error('Error fetching property by ID:', err);
+    return null;
+  }
 }
 
 export async function getFeaturedProperties() {
-  await connectDB();
-  const properties = await Property.find({ featured: true }).sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(properties));
+  try{
+    await connectDB();
+    const properties = await Property.find({ featured: true }).sort({ createdAt: -1 }).lean();
+    return JSON.parse(JSON.stringify(properties));
+  }catch(err){
+    console.error('Error fetching featured properties:', err);
+    return [];
+  }
 }
 
 export async function getDashboardData(query) {
-  await connectDB();
-  const totalProperties = await Property.countDocuments();
-  const totalSales = await Property.countDocuments({ status: 'sale' });
-  const totalRentals = await Property.countDocuments({ status: 'rent' });
-  const recentProperties = await Property.find().sort({ createdAt: -1 }).limit(3).lean();
-  const featuredProperties = await Property.find({ featured: true }).sort({ createdAt: -1 }).lean();
-  return {
-    totalProperties,
-    totalSales,
-    totalRentals,
-    recentProperties: JSON.parse(JSON.stringify(recentProperties)),
-    featuredProperties: JSON.parse(JSON.stringify(featuredProperties)),
-  };
+  try{
+    await connectDB();
+    const totalProperties = await Property.countDocuments();
+    const totalSales = await Property.countDocuments({ status: 'sale' });
+    const totalRentals = await Property.countDocuments({ status: 'rent' });
+    const recentProperties = await Property.find().sort({ createdAt: -1 }).limit(3).lean();
+    const featuredProperties = await Property.find({ featured: true }).sort({ createdAt: -1 }).lean();
+    return {
+      totalProperties,
+      totalSales,
+      totalRentals,
+      recentProperties: JSON.parse(JSON.stringify(recentProperties)),
+      featuredProperties: JSON.parse(JSON.stringify(featuredProperties)),
+    };
+  }catch(err){
+    console.error('Error fetching dashboard data:', err);
+    return {
+      totalProperties: 0,
+      totalSales: 0,
+      totalRentals: 0,
+      recentProperties: [],
+      featuredProperties: [],
+    };
+  }
 }

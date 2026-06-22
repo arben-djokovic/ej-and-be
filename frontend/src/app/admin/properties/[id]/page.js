@@ -10,7 +10,11 @@ export default async function AdminPropertyPage({ params }) {
 
   let property
   if (mode === 'edit') {
-    property = await getPropertyById(id)
+    try{
+      property = await getPropertyById(id)
+    }catch(err){
+      return notFound()
+    }
   }
 
   if (mode === 'edit' && !property) {

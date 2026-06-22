@@ -3,7 +3,6 @@ import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
-// import pathname 
 import { usePathname } from 'next/navigation'
 import { SelectLanguage } from './SelectLanguage'
 
@@ -14,6 +13,7 @@ export const Header = () => {
     useEffect(() => {
         setIsMobileOpen(false)
     }, [pathname])
+    
   return (<div className='sticky w-full top-0 left-0 z-100 shadow-lg'>
     <div className='h-21 bg-primary text-white p-4 flex items-center justify-around relative z-10' >
         <Link href="/">

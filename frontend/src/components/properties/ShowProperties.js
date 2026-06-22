@@ -12,13 +12,19 @@ export default function ShowProperties({ initialProperties, hasMore, params }) {
   const [loading, setLoading] = React.useState(false);
 
   const loadMore = async () => {
-    setLoading(true);
-    const nextPage = page + 1;
-    const res = await getProperties({ page: nextPage, status: params.status, type: params.type, city: params.city, rooms: params.rooms, minPrice: params.minPrice, maxPrice: params.maxPrice });
-    setProperties(res.properties);
-    setHasMoreState(res.hasMore);
-    setPage(nextPage);
-    setLoading(false);
+    try{
+      setLoading(true);
+      const nextPage = page + 1;
+      const res = await getProperties({ page: nextPage, status: params.status, type: params.type, city: params.city, rooms: params.rooms, minPrice: params.minPrice, maxPrice: params.maxPrice });
+      setProperties(res.properties);
+      setHasMoreState(res.hasMore);
+      setPage(nextPage);
+      setLoading(false);
+    }catch(err){
+      setLoading(false);
+      alert('Doslo je do greske prilikom ucitavanja dodatnih nekretnina. Molimo pokusajte ponovo.')
+      console.error('Error loading more properties:', err)
+    }
   };
 
   React.useEffect(() => {

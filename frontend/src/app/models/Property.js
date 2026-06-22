@@ -13,7 +13,7 @@ const ImageSchema = new Schema(
     },
     isPrimary: {
       type: Boolean,
-      default: false, // jedna slika je "cover" / thumbnail
+      default: false, // jedna slika je "cover" / thumbnail 
     }
   },
   { _id: true }
@@ -24,15 +24,15 @@ const PropertySchema = new Schema(
   {
     // ── Naslovi (3 jezika) ──────────────────────────────────────────────────
     title: { type: String, required: true, trim: true },       // Crnogorski (default)
-    title_en: { type: String, trim: true, default: '' },       // Engleski
-    title_tr: { type: String, trim: true, default: '' },       // Turski
-    title_ru: { type: String, trim: true, default: '' },       // Ruski
+    title_en: { type: String, trim: true, required: true },       // Engleski
+    title_tr: { type: String, trim: true, required: true },       // Turski
+    title_ru: { type: String, trim: true, required: true },       // Ruski
 
     // ── Opisi (3 jezika) ───────────────────────────────────────────────────
-    description: { type: String, default: '' },
-    description_en: { type: String, default: '' },
-    description_tr: { type: String, default: '' },
-    description_ru: { type: String, default: '' },
+    description: { type: String, required: true, trim: true }, // Crnogorski (default)
+    description_en: { type: String, required: true, trim: true },
+    description_tr: { type: String, required: true, trim: true },
+    description_ru: { type: String, required: true, trim: true },
 
     // ── Cijena i status ────────────────────────────────────────────────────
     price: {
@@ -62,48 +62,48 @@ const PropertySchema = new Schema(
     address: {
       type: String,
       trim: true,
-      default: '',
+      required: true,
     },
 
     // ── Karakteristike ─────────────────────────────────────────────────────
     area: {
       type: Number,
       min: 0,
-      default: null, // m²
+      required: true,
     },
     rooms: {
       type: Number,
       min: 0,
-      default: null,
+      required: true,
     },
     bathrooms: {
       type: Number,
       min: 0,
-      default: null,
+      required: true,
     },
     floor: {
       type: Number,
-      default: null,
+      required: true,
     },
     total_floors: {
       type: Number,
       min: 1,
-      default: null,
+      required: true,
     },
     year_built: {
       type: Number,
       min: 1800,
       max: new Date().getFullYear() + 5,
-      default: null,
+      required: true,
     },
     parking: {
       type: Boolean,
-      default: false,
+      required: true,
     },
     heating: {
       type: String,
       trim: true,
-      default: '',
+      required: true,
       // npr. 'central', 'electric', 'gas', 'underfloor', itd.
     },
 

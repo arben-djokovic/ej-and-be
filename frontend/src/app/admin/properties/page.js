@@ -5,8 +5,8 @@ import { Building2, Plus, Pencil, Eye } from 'lucide-react'
 import Link from 'next/link'
 
 export default async function AdminPropertiesPage() {
-    const properties = await getProperties()
-
+    const response = await getProperties({ page: 1000 });
+    const properties = response.properties;
   const formatPrice = (price) => {
     return new Intl.NumberFormat('de-DE').format(price) + ' EUR'
   }

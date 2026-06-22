@@ -81,7 +81,8 @@ export function PropertyForm({ property, mode }) {
       if (mode === 'create') {
         const actionResponse = await createProperty(propertyData)
         if (!actionResponse.success){
-          console.error('Failed to create property:', actionResponse)
+          console.log('Failed to create property:', actionResponse)
+          alert('Greska prilikom kreiranja nekretnine: ' + (actionResponse.error || 'Neznana greska'))
         }else if(actionResponse.property && actionResponse.property._id){
           router.push('/properties/' + actionResponse.property._id)
         }
@@ -134,6 +135,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.title_en}
               onChange={(e) => setFormData({ ...formData, title_en: e.target.value })}
               placeholder="Luxury apartment in Podgorica center"
+              required
             />
           </div>
 
@@ -145,6 +147,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.title_tr}
               onChange={(e) => setFormData({ ...formData, title_tr: e.target.value })}
               placeholder="Podgorica merkezinde luks daire"
+              required
             />
           </div>
 
@@ -156,6 +159,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.title_ru}
               onChange={(e) => setFormData({ ...formData, title_ru: e.target.value })}
               placeholder="Роскошная квартира в центре Подгорицы"
+              required
             />
           </div>
 
@@ -230,6 +234,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.address}
               onChange={(e) => setFormData({ ...formData, address: e.target.value })}
               placeholder="npr. Ulica Slobode 15"
+              required
             />
           </div>
         </div>
@@ -262,6 +267,7 @@ export function PropertyForm({ property, mode }) {
               onChange={(e) => setFormData({ ...formData, description_en: e.target.value })}
               placeholder="Detailed property description..."
               rows={4}
+              required
             />
           </div>
 
@@ -274,6 +280,7 @@ export function PropertyForm({ property, mode }) {
               onChange={(e) => setFormData({ ...formData, description_tr: e.target.value })}
               placeholder="Detayli mulk aciklamasi..."
               rows={4}
+              required
             />
           </div>
 
@@ -286,6 +293,7 @@ export function PropertyForm({ property, mode }) {
               onChange={(e) => setFormData({ ...formData, description_ru: e.target.value })}
               placeholder="Подробное описание недвижимости..."
               rows={4}
+              required
             />
           </div>
         </div>
@@ -318,6 +326,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.rooms}
               onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
               placeholder="3"
+              required
             />
           </div>
 
@@ -330,6 +339,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.bathrooms}
               onChange={(e) => setFormData({ ...formData, bathrooms: e.target.value })}
               placeholder="2"
+              required
             />
           </div>
 
@@ -342,6 +352,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.floor}
               onChange={(e) => setFormData({ ...formData, floor: e.target.value })}
               placeholder="3"
+              required
             />
           </div>
 
@@ -354,6 +365,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.total_floors}
               onChange={(e) => setFormData({ ...formData, total_floors: e.target.value })}
               placeholder="5"
+              required
             />
           </div>
 
@@ -366,6 +378,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.year_built}
               onChange={(e) => setFormData({ ...formData, year_built: e.target.value })}
               placeholder="2020"
+              required
             />
           </div>
 
@@ -377,6 +390,7 @@ export function PropertyForm({ property, mode }) {
               value={formData.heating}
               onChange={(e) => setFormData({ ...formData, heating: e.target.value })}
               placeholder="Centralno"
+              required
             />
           </div>
 

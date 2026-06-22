@@ -4,18 +4,29 @@ import { connectDB } from '@/app/lib/mongoose';
 import { Property } from '@/app/models/Property';
 import { revalidatePath } from 'next/cache';
 
+//get limit from env
+const LIMIT = parseInt(process.env.LIMIT) || 3;
+
 // Dohvati sve
-export async function getProperties() {
+export async function getProperties({ page, limit = LIMIT }) {
+  const totalLimit = page * limit;
   await connectDB();
-  const properties = await Property.find().sort({ createdAt: -1 }).lean();
-  return JSON.parse(JSON.stringify(properties)); // serialize za Next.js
+  const properties = await Property.find().sort({ createdAt: -1, _id: -1 }).limit(totalLimit).lean();
+  const totalCount = await Property.countDocuments();
+  const hasMore = totalCount > properties.length;
+  return { properties: JSON.parse(JSON.stringify(properties)), hasMore }; // serialize za Next.js
 }
 
 // Dodaj novu
 export async function createProperty(data) {
-  await connectDB();
-  const property = await Property.create(data);
-  return { success: true, property: JSON.parse(JSON.stringify(property)) };
+  try{
+    await connectDB();
+    const property = await Property.create(data);
+    return { success: true, property: JSON.parse(JSON.stringify(property)) };
+  }catch(err){
+    console.error('Error creating property:', err);
+    return { success: false, error: err.message };
+  }
 }
 
 // Obrisi

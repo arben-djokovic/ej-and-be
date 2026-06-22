@@ -8,11 +8,19 @@ import { revalidatePath } from 'next/cache';
 const LIMIT = parseInt(process.env.LIMIT) || 3;
 
 // Dohvati sve
-export async function getProperties({ page, limit = LIMIT }) {
+export async function getProperties({ page, limit = LIMIT, status, type, city, rooms, minPrice, maxPrice }) {
   const totalLimit = page * limit;
   await connectDB();
-  const properties = await Property.find().sort({ createdAt: -1, _id: -1 }).limit(totalLimit).lean();
-  const totalCount = await Property.countDocuments();
+  const query = {};
+  if (!!status && status !== "all") query.status = status;
+  if (!!type && type !== "all") query.type = type;
+  if (!!city && city !== "all") query.city = city;
+  if (!!rooms && rooms !== "all") query.rooms = rooms;
+  if (minPrice) query.price = { ...query.price, $gte: minPrice };
+  if (maxPrice) query.price = { ...query.price, $lte: maxPrice };
+  console.log('Filters:', query);
+  const properties = await Property.find(query).sort({ createdAt: -1, _id: -1 }).limit(totalLimit).lean();
+  const totalCount = await Property.find(query).countDocuments();
   const hasMore = totalCount > properties.length;
   return { properties: JSON.parse(JSON.stringify(properties)), hasMore }; // serialize za Next.js
 }

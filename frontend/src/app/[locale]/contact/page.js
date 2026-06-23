@@ -1,20 +1,21 @@
-'use client';
 import ContactForm from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/header/Header";
 import { PageHeader } from "@/components/PageHeader";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import React from "react";
 
-export default function Contact() {
+export default async function Contact() {
+  const t = await getTranslations("Contact");
   
   return (
     <>
       <Header />
       <div>
         <PageHeader
-          title="Kontakt"
-          subtitle="Imate pitanja? Slobodno nas kontaktirajte"
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
         <section id="contact" className="py-20 scroll-mt-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -26,10 +27,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#1a2744] mb-1">
-                    Adresa
+                    {t("address")}
                   </h3>
                   <p className="text-muted-foreground">
-                    Rimski Trg b.b., Podgorica, Montenegro
+                    {t("address_value")}
                   </p>
                 </div>
               </div>
@@ -40,7 +41,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#1a2744] mb-1">
-                    Telefon
+                    {t("phone")}
                   </h3>
                   <p className="text-muted-foreground">+382 68 27 910</p>
                 </div>
@@ -51,7 +52,9 @@ export default function Contact() {
                   <Mail className="h-5 w-5 text-[#c9a962]" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-[#1a2744] mb-1">Email</h3>
+                  <h3 className="font-semibold text-[#1a2744] mb-1">
+                    {t("email")}
+                  </h3>
                   <p className="text-muted-foreground">info@ejbiandco.me</p>
                 </div>
               </div>
@@ -62,10 +65,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#1a2744] mb-1">
-                    Radno vrijeme
+                    {t("working_hours")}
                   </h3>
                   <p className="text-muted-foreground">
-                    Pon - Pet: 09:00 - 17:00
+                    {t("working_hours_value")}
                   </p>
                 </div>
               </div>

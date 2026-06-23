@@ -3,8 +3,10 @@ import { Header } from '@/components/header/Header'
 import { PageHeader } from '@/components/PageHeader'
 import ShowProperties from '@/components/properties/ShowProperties'
 import { getProperties } from '@/app/actions/PropertyActions'
+import { getTranslations } from 'next-intl/server'
 
 export default async function Properties({ searchParams }) {
+  const t = await getTranslations("Properties");
   let data;
   let initialProperties = []
   let hasMore = false
@@ -21,7 +23,7 @@ export default async function Properties({ searchParams }) {
   return (<>
     <Header />
     <div>
-        <PageHeader title="Nekretnine" subtitle="Pregledajte naše dostupne nekretnine" />
+        <PageHeader title={t("title")} subtitle={t("subtitle")} />
         <div className='mb-10'>
           <ShowProperties params={params} initialProperties={initialProperties} hasMore={hasMore} />
         </div>

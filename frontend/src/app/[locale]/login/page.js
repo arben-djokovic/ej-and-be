@@ -1,9 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 
 export default function LoginPage() {
@@ -58,7 +57,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@example.com"
-                  className="w-full rounded-lg pl-10 h-10 border border-gray-300 focus:border-[#c9a962] focus:ring-[#c9a962]"
+                  className="w-full rounded-lg h-10 pl-10 border border-gray-300 focus:border-[#c9a962] focus:ring-[#c9a962]"
                   required
                 />
               </div>

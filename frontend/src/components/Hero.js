@@ -2,8 +2,10 @@ import React from 'react'
 import { Shape } from './Shape'
 import { Button } from './Button'
 import { Search } from 'lucide-react'
+import { useTranslations } from "next-intl";
 
 export const Hero = () => {
+  const t = useTranslations("Home.hero");
   return (
     <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-20">
           {/* Background Image */}
@@ -26,18 +28,17 @@ export const Hero = () => {
               </div>
 
               <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
-                Pronađite svoj dom iz snova
+                {t("title")}
               </h1>
 
               <p className="text-md md:text-lg text-white/80 mb-10 max-w-2xl mx-auto text-pretty">
-                Profesionalna usluga posredovanja u prometu nekretnina u Crnoj
-                Gori
+                {t("subtitle")}
               </p>
 
               <Button link="/properties">
                 <p className='px-8 py-4 flex items-center gap-2'>
                   <Search className="h-5 w-5" />
-                  Pretraži nekretnine
+                  {t("button")}
                 </p>
               </Button>
             </div>

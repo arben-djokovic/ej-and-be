@@ -3,18 +3,21 @@ import { Header } from "@/components/header/Header";
 import { PageHeader } from "@/components/PageHeader";
 import { Stats } from "@/components/Stats";
 import { WhyUs } from "@/components/WhyUs";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import React from "react";
 
 export default async function About() {
+
+  const t = await getTranslations("About");
   
   return (
     <>
       <Header />
       <div>
         <PageHeader
-          title="O nama"
-          subtitle="Saznajte više o našoj priči i misiji"
+          title={t("title")}
+          subtitle={t("subtitle")}
         />
         <section className="py-16">
           <div className="container mx-auto px-4">
@@ -40,24 +43,9 @@ export default async function About() {
                   Ej&Be Real Estate
                 </h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Dobrodošli u Ej&Be Real Estate, vašeg pouzdanog partnera za
-                    nekretnine u Crnoj Gori. Sa više od decenije iskustva u
-                    industriji nekretnina, posvećeni smo pružanju izuzetne
-                    usluge našim klijentima.
-                  </p>
-                  <p>
-                    Naš tim stručnjaka razumije da je kupovina, prodaja ili
-                    iznajmljivanje nekretnine jedna od najvažnijih odluka u
-                    životu. Zato vam pružamo personalizovanu podršku kroz svaki
-                    korak procesa.
-                  </p>
-                  <p>
-                    Bilo da tražite savršen dom za svoju porodicu, investicionu
-                    nekretninu ili poslovni prostor, ovdje smo da vam pomognemo
-                    da pronađete idealnu nekretninu koja odgovara vašim
-                    potrebama i budžetu.
-                  </p>
+                  <p>{t("description1")}</p>
+                  <p>{t("description2")}</p>
+                  <p>{t("description3")}</p>
                 </div>
               </div>
               <div className="relative">
@@ -71,7 +59,7 @@ export default async function About() {
                 </div>
                 <div className="absolute -bottom-6 -left-6 bg-[#c9a962] text-white p-4 md:p-5 rounded-xl">
                   <div className="text-2xl md:text-3xl font-bold">10+</div>
-                  <div className="text-sm">Godina iskustva</div>
+                  <div className="text-sm">{t("years_of_experience")}</div>
                 </div>
               </div>
             </div>

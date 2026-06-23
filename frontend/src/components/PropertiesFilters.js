@@ -3,8 +3,10 @@ import React from "react";
 import { Button } from "./Button";
 import { RotateCcw, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export const PropertiesFilters = ({ params, setPage }) => {
+  const t = useTranslations("Properties");
   const router = useRouter();
   const [filters, setFilters] = React.useState({
     status: params.status || "all",
@@ -49,7 +51,7 @@ export const PropertiesFilters = ({ params, setPage }) => {
             {/* Status */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Status
+                {t("filters.status.label")}
               </label>
               <select
                 value={filters.status}
@@ -58,16 +60,16 @@ export const PropertiesFilters = ({ params, setPage }) => {
                 }
                 className="w-full h-10 px-3 rounded-lg border border-gray-200 bg-white text-sm focus:border-[#c9a962] focus:ring-[#c9a962]"
               >
-                <option value="all">Sve</option>
-                <option value="sale">Na prodaju</option>
-                <option value="rent">Za iznajmljivanje</option>
+                <option value="all">{t("filters.status.all")}</option>
+                <option value="sale">{t("filters.status.sale")}</option>
+                <option value="rent">{t("filters.status.rent")}</option>
               </select>
             </div>
 
             {/* Type */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Tip nekretnine
+                {t("filters.type.label")}
               </label>
               <select
                 value={filters.type}
@@ -76,18 +78,18 @@ export const PropertiesFilters = ({ params, setPage }) => {
                 }
                 className="w-full h-10 px-3 rounded-lg border border-gray-200 bg-white text-sm focus:border-[#c9a962] focus:ring-[#c9a962]"
               >
-                <option value="all">Svi tipovi</option>
-                <option value="apartment">Stan</option>
-                <option value="house">Kuća</option>
-                <option value="land">Zemljište</option>
-                <option value="commercial">Komercijalna</option>
+                <option value="all">{t("filters.type.all")}</option>
+                <option value="apartment">{t("filters.type.apartment")}</option>
+                <option value="house">{t("filters.type.house")}</option>
+                <option value="land">{t("filters.type.land")}</option>
+                <option value="commercial">{t("filters.type.commercial")}</option>
               </select>
             </div>
 
             {/* City */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Grad
+                {t("filters.city.label")}
               </label>
               <select
                 value={filters.city}
@@ -96,7 +98,7 @@ export const PropertiesFilters = ({ params, setPage }) => {
                 }
                 className="w-full h-10 px-3 rounded-lg border border-gray-200 bg-white text-sm focus:border-[#c9a962] focus:ring-[#c9a962]"
               >
-                <option value="all">Svi gradovi</option>
+                <option value="all">{t("filters.city.all")}</option>
                 {cities.map((city) => (
                   <option key={city} value={city}>
                     {city}
@@ -108,7 +110,7 @@ export const PropertiesFilters = ({ params, setPage }) => {
             {/* Rooms */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Struktura
+                {t("filters.rooms.label")}
               </label>
               <select
                 value={filters.rooms}
@@ -117,20 +119,20 @@ export const PropertiesFilters = ({ params, setPage }) => {
                 }
                 className="w-full h-10 px-3 rounded-lg border border-gray-200 bg-white text-sm focus:border-[#c9a962] focus:ring-[#c9a962]"
               >
-                <option value="all">Sve strukture</option>
-                <option value="0">Garsonjera</option>
-                <option value="1">Jednosoban</option>
-                <option value="2">Dvosoban</option>
-                <option value="3">Trosoban</option>
-                <option value="4">Cetvorosoban</option>
-                <option value="5">Petosoban</option>
+                <option value="all">{t("filters.rooms.all")}</option>
+                <option value="0">{t("filters.rooms.no_rooms")}</option>
+                <option value="1">{t("filters.rooms.one_room")}</option>
+                <option value="2">{t("filters.rooms.two_rooms")}</option>
+                <option value="3">{t("filters.rooms.three_rooms")}</option>
+                <option value="4">{t("filters.rooms.four_rooms")}</option>
+                <option value="5">{t("filters.rooms.five_rooms")}</option>
               </select>
             </div>
 
             {/* Price Range */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Cijena od
+                {t("filters.min_price.label")}
               </label>
               <input
                 type="number"
@@ -145,7 +147,7 @@ export const PropertiesFilters = ({ params, setPage }) => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Cijena do
+                {t("filters.max_price.label")}
               </label>
               <input
                 type="number"
@@ -162,12 +164,12 @@ export const PropertiesFilters = ({ params, setPage }) => {
           <div className="flex justify-end gap-3 mt-6">
             <div onClick={handleSearch} className="cursor-pointer shadow-lg border border-gray-200 rounded-lg gap-2 py-2 px-3 flex items-center text-sm hover:shadow-xl">
               <Search className="h-4 w-4" />
-              Pretrazi
+              {t("filters.search_button")}  
             </div>
-            <Button variant="outline">
+            <Button link="#" variant="outline">
               <div onClick={handleReset} className="gap-2 py-2 px-3 flex items-center text-sm ">
                 <RotateCcw className="h-4 w-4" />
-                Resetuj
+                {t("filters.reset_button")}
               </div>
             </Button>
           </div>

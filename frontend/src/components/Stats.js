@@ -1,12 +1,15 @@
+import { getTranslations } from 'next-intl/server'
 import React from 'react'
 
-export const Stats = () => {
+export const Stats = async () => {
 
+  const t = await getTranslations("Home.stats")
+  
     const stats = [
-        { value: '300+', label: "Nekretnina u ponudi" },
-        { value: '10+', label: "Godina iskustva" },
-        { value: '500+', label: "Zadovoljnih klijenata" },
-        { value: '800+', label: "Uspješnih transakcija" },
+        { value: '300+', label: t("properties_in_stock") },
+        { value: '10+', label: t("years_of_experience") },
+        { value: '500+', label: t("satisfied_customers") },
+        { value: '800+', label: t("successful_transactions") },
     ]
   return (    
     <section className="py-16 bg-gray-50 border-y border-gray-300">

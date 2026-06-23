@@ -1,8 +1,15 @@
 import { Bath, Bed, MapPin, Maximize } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import React from 'react'
+import { useLocale, useTranslations } from "next-intl";
+import { getLocalizedText } from "@/app/resolver";
 
 export const PropertyCard = ({ property }) => {
+  const locale = useLocale();
+  const t = useTranslations("Properties");
+
+  const i18n = getLocalizedText(property, locale);
+  // const typeLabel = getPropertyTypeLabel(property?.type, locale);
 
   return (
         <Link href={`/properties/${property._id}`} className="block group text-gray-700">
@@ -18,10 +25,15 @@ export const PropertyCard = ({ property }) => {
           {/* Status Badge */}
           <div className="absolute top-4 left-4">
             <span
-              className={`px-3 py-1.5 rounded-full text-sm font-semibold text-white bg-[#1a2744]`}
-                // property.status === 'sale' ? 'bg-[#1a2744]' : 'bg-[#c9a962]'}
+              className={`px-3 py-1.5 rounded-full text-sm font-semibold text-white ${
+                property.status === "sale"
+                  ? "bg-[#1a2744]"
+                  : "bg-[#c9a962]"
+              }`}
             >
-              {property.status === 'sale' ? 'Prodaja' : 'Izdavanje'}
+              {property.status === "sale"
+                ? t("filters.status.sale")
+                : t("filters.status.rent")}
             </span>
           </div>
 
@@ -36,7 +48,7 @@ export const PropertyCard = ({ property }) => {
         {/* Content */}
         <div className="p-5">
           <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2 min-h-14 group-hover:text-[#c9a962] transition-colors">
-            {property.title}
+            {i18n.title}
           </h3>
 
           <div className="flex items-center gap-1 text-muted-foreground mb-4">

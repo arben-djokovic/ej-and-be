@@ -1,29 +1,32 @@
 import { Award, Headphones, Shield, Users } from 'lucide-react'
 import React from 'react'
 import { Shape } from './Shape'
+import { getTranslations } from 'next-intl/server'
 
-export const WhyUs = () => {
+export const WhyUs = async () => {
+
+  const t = await getTranslations("Home.whyus")
 
     const features = [
     {
       icon: Award,
-      title: "Iskustvo i stručnost",
-      description: "Više od 10 godina iskustva u prometu nekretnina u Crnoj Gori.",
+      title: t("experience.title"),
+      description: t("experience.description"),
     },
     {
       icon: Shield,
-      title: "Povjerenje i sigurnost",
-      description: "Garantujemo sigurnost i transparentnost u svakoj transakciji.",
+      title: t("trust_and_security.title"),
+      description: t("trust_and_security.description"),
     },
     {
       icon: Users,
-      title: "Individualni pristup",
-      description: "Svaki klijent dobija personalizovanu uslugu prilagođenu njegovim potrebama.",
+      title: t("individual_approach.title"),
+      description: t("individual_approach.description"),
     },
     {
       icon: Headphones,
-      title: "Podrška 24/7",
-      description: "Uvijek smo dostupni za sva vaša pitanja i potrebe.",
+      title: t("support.title"),
+      description: t("support.description"),
     },
   ]
 
@@ -35,7 +38,7 @@ export const WhyUs = () => {
             <Shape />
           </div>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-            Zašto izabrati nas
+            {t("title")}
           </h2>
         </div>
 

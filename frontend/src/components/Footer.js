@@ -1,9 +1,11 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React from "react";
+import { getTranslations } from "next-intl/server";
 
-export const Footer = () => {
+export const Footer = async () => {
+  const t = await getTranslations("Footer");
   return (
     <footer className="bg-[#1a2744] text-white">
       <div className="container mx-auto px-4 py-16">
@@ -18,14 +20,14 @@ export const Footer = () => {
               className="h-10 w-auto mb-5"
             />
             <p className="text-white/70 text-sm leading-relaxed">
-              Vaš pouzdan partner za nekretnine u Crnoj Gori. Profesionalna usluga posredovanja u prometu nekretnina
+              {t("description")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="font-semibold text-lg mb-5">
-              Brzi linkovi
+              {t("fast_links.title")}
             </h3>
             <ul className="space-y-3">
               <li>
@@ -33,7 +35,7 @@ export const Footer = () => {
                   href="/"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Početna
+                  {t("fast_links.home")}
                 </Link>
               </li>
               <li>
@@ -41,7 +43,7 @@ export const Footer = () => {
                   href="/properties"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                    Nekretnine
+                    {t("fast_links.properties")}
                 </Link>
               </li>
               <li>
@@ -49,7 +51,7 @@ export const Footer = () => {
                   href="/about"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                    O nama
+                    {t("fast_links.about")}
                 </Link>
               </li>
               <li>
@@ -57,7 +59,7 @@ export const Footer = () => {
                   href="/contact"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                    Kontakt
+                    {t("fast_links.contact")}
                 </Link>
               </li>
             </ul>
@@ -65,14 +67,14 @@ export const Footer = () => {
 
           {/* Property Types */}
           <div>
-            <h3 className="font-semibold text-lg mb-5">Tip nekretnine</h3>
+            <h3 className="font-semibold text-lg mb-5">{t("types_of_properties.title")}</h3>
             <ul className="space-y-3">
               <li>
                 <Link
                   href="/properties?type=apartment"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Stan
+                  {t("types_of_properties.apartments")}
                 </Link>
               </li>
               <li>
@@ -80,7 +82,7 @@ export const Footer = () => {
                   href="/properties?type=house"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Kuća
+                  {t("types_of_properties.houses")}
                 </Link>
               </li>
               <li>
@@ -88,7 +90,7 @@ export const Footer = () => {
                   href="/properties?type=land"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Plac
+                  {t("types_of_properties.land")}
                 </Link>
               </li>
               <li>
@@ -96,7 +98,7 @@ export const Footer = () => {
                   href="/properties?type=commercial"
                   className="text-white/70 hover:text-white transition-colors"
                 >
-                  Poslovni prostor
+                  {t("types_of_properties.commercial")}
                 </Link>
               </li>
             </ul>
@@ -105,13 +107,13 @@ export const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="font-semibold text-lg mb-5">
-              Kontakt informacije
+              {t("contact_info.title")}
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-[#c9a962] shrink-0 mt-0.5" />
                 <span className="text-white/70 text-sm">
-                  Rimski Trg b.b., Podgorica, Montenegro
+                  {t("address_value")}
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -132,10 +134,10 @@ export const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/50 text-sm">
-              © 2026 Ej&Be Real Estate. Sva prava zadržana.
+              {t("rights_reserved")}
             </p>
             <p className="text-white/50 text-sm">
-              Web development by{" "}
+              {t("developed_by")}{" "}
               <Link href="https://www.linkedin.com/in/arben-djokovic" className="text-[#c9a962]" target="_blank">
                 Arben Ðoković
               </Link>

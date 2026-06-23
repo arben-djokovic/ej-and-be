@@ -1,7 +1,7 @@
+import { getDashboardData } from '@/app/actions/PropertyActions';
 import { AdminHeader } from '@/components/admin/AdminHeader';
 import { Building2, TrendingUp, Eye, Plus } from 'lucide-react'
 import Link from 'next/link'
-import { getDashboardData } from '../actions/PropertyActions';
 
 export default async function AdminDashboard() {
     let data

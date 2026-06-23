@@ -1,0 +1,166 @@
+{
+    "Header": {
+        "home": "Home",
+        "properties": "Properties",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "Home": {
+        "hero": {
+            "title": "Find Your Dream Home",
+            "subtitle": "Professional real estate brokerage services across Montenegro.",
+            "button": "Show Properties"
+        },
+        "featuredproperties": {
+            "title": "Featured Properties",
+            "subtitle": "Handpicked properties from our site",
+            "button": "View More"
+        },
+        "stats": {
+            "properties_in_stock": "Properties in Stock",
+            "years_of_experience": "Years of Experience",
+            "satisfied_customers": "Satisfied Customers",
+            "successful_transactions": "Successful Transactions"
+        },
+        "whyus": {
+            "title": "Why Choose Us",
+            "experience": {
+                "title": "Experience and Expertise",
+                "description": "More than 10 years of experience in the real estate market in Montenegro."
+            },
+            "trust_and_security": {
+                "title": "Trust and Security",
+                "description": "We guarantee security and transparency in every transaction."
+            },
+            "individual_approach": {
+                "title": "Individual Approach",
+                "description": "Each client receives a personalized service tailored to their needs."
+            },
+            "support": {
+                "title": "24/7 Support",
+                "description": "We are always available to answer your questions and meet your needs."
+            }
+        }
+    },
+    "About": {
+        "title": "About Us",
+        "subtitle": "Learn more about our story and mission",
+        "description1": "Welcome to Ej&Be Real Estate, your trusted partner for real estate in Montenegro. With more than a decade of experience in the industry, we are committed to providing exceptional service to our clients.",
+        "description2": "Our team of professionals understands that buying, selling, or renting property is one of the most important decisions in life. That's why we offer personalized support throughout every step of the process.",
+        "description3": "Whether you're looking for the perfect home for your family, an investment property, or a business space, we're here to help you find the ideal property that meets your needs and budget.",
+        "years_of_experience": "Years of Experience"
+    },
+    "Contact": {
+        "title": "Contact us",
+        "subtitle": "Have questions? Feel free to get in touch with us",
+        "address": "Address",
+        "phone": "Phone",
+        "email": "Email",
+        "working_hours": "Working hours",
+        "working_hours_value": "Mon - Fri: 09:00 - 17:00",
+        "name_form": "Your name",
+        "email_form": "Email address",
+        "phone_form": "Phone number",
+        "message_form": "Message",
+        "submit_button": "Send message",
+        "address_value": "Rimski Trg b.b., Podgorica, Montenegro"
+    },
+    "Footer": {
+        "description": "Your trusted partner for real estate in Montenegro. Professional brokerage services in the real estate market.",
+        "fast_links": {
+            "title": "Fast Links",
+            "home": "Home",
+            "properties": "Properties",
+            "about": "About",
+            "contact": "Contact"
+        },
+        "types_of_properties": {
+            "title": "Types of Properties",
+            "apartments": "Apartments",
+            "houses": "Houses",
+            "land": "Land",
+            "commercial": "Commercial"
+        },
+        "contact_info": {
+            "title": "Contact Information"
+        },
+        "rights_reserved": "© 2026 Ej&Be Real Estate. All rights reserved.",
+        "developed_by": "Website developed by",
+        "address_value": "Rimski Trg b.b., Podgorica, Montenegro"
+    },
+    "Property": {
+        "status_sale": "For sale",
+        "status_rent": "For rent",
+        "house": "House",
+        "apartment": "Apartment",
+        "land": "Land",
+        "commercial": "Commercial space",
+        "rooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "floor": "Floor",
+        "area": "Area",
+        "year_built": "Year built",
+        "parking": "Parking",
+        "heating": "Heating",
+        "subtitle": "Professional real estate agency",
+        "working_hours": "Working hours",
+        "description": "Property description",
+        "details": "Details"
+    },
+    "Properties": {
+        "title": "Properties",
+        "subtitle": "Browse our available properties",
+        "filters": {
+            "status": {
+                "label": "Status",
+                "all": "All",
+                "sale": "For sale",
+                "rent": "For rent"
+            },
+            "type": {
+                "label": "Type",
+                "all": "All types",
+                "house": "House",
+                "apartment": "Apartment",
+                "land": "Land",
+                "commercial": "Commercial space"
+            },
+            "city": {
+                "label": "City",
+                "all": "All cities"
+            },
+            "rooms": {
+                "label": "Layout",
+                "all": "All layouts",
+                "no_rooms": "Studio",
+                "one_room": "One bedroom",
+                "two_rooms": "Two bedroom",
+                "three_rooms": "Three bedroom",
+                "four_rooms": "Four bedroom",
+                "five_rooms": "Five bedroom"
+            },
+            "min_price": {
+                "label": "Price from"
+            },
+            "max_price": {
+                "label": "Price to"
+            },
+            "search_button": "Search",
+            "reset_button": "Reset filters"
+        },
+        "show_more_button": "Show more",
+        "loading": "Loading..."
+    },
+    "Error": {
+        "title": "Error",
+        "subtitle": "Something went wrong",
+        "description": "An unexpected error occurred. Please try again or return to the homepage.",
+        "home_button": "Back to homepage",
+        "retry_button": "Try again"
+    },
+    "Not_Found": {
+        "title": "Page not found",
+        "subtitle": "The page you are looking for does not exist, has been moved, or has been removed.",
+        "home_button": "Back to homepage"
+    }
+}

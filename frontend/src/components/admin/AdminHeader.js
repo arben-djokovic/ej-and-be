@@ -1,6 +1,6 @@
 import React from 'react'
 import { Plus } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 
 export const AdminHeader = ({ title, subtitle }) => {
   return (

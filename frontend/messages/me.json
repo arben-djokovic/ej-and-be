@@ -1,0 +1,166 @@
+{
+    "Header": {
+        "home": "Pocetna",
+        "properties": "Nekretnine",
+        "about": "O nama",
+        "contact": "Kontakt"
+    },
+    "Home": {
+        "hero": {
+            "title": "Pronađite svoj dom iz snova",
+            "subtitle": "Profesionalna usluga posredovanja u prometu nekretnina u Crnoj Gori",
+            "button": "Pretraži nekretnine"
+        },
+        "featuredproperties": {
+            "title": "Istaknute nekretnine",
+            "subtitle": "Izdvojene nekretnine sa našeg sajta",
+            "button": "Pogledaj više"
+        },
+        "stats": {
+            "properties_in_stock": "Nekretnina u ponudi",
+            "years_of_experience": "Godina iskustva",
+            "satisfied_customers": "Zadovoljnih klijenata",
+            "successful_transactions": "Uspješnih transakcija"
+        },
+        "whyus": {
+            "title": "Zašto izabrati nas",
+            "experience": {
+                "title": "Iskustvo i stručnost",
+                "description": "Više od 10 godina iskustva u prometu nekretnina u Crnoj Gori."
+            },
+            "trust_and_security": {
+                "title": "Povjerenje i sigurnost",
+                "description": "Garantujemo sigurnost i transparentnost u svakoj transakciji."
+            },
+            "individual_approach": {
+                "title": "Individualni pristup",
+                "description": "Svaki klijent dobija personalizovanu uslugu prilagođenu njegovim potrebama."
+            },
+            "support": {
+                "title": "Podrška 24/7",
+                "description": "Uvijek smo dostupni za sva vaša pitanja i potrebe."
+            }
+        }
+    },
+    "About": {
+        "title": "O nama",
+        "subtitle": "Saznajte više o našoj priči i misiji",
+        "description1": "Dobrodošli u Ej&Be Real Estate, vašeg pouzdanog partnera za nekretnine u Crnoj Gori. Sa više od decenije iskustva u industriji nekretnina, posvećeni smo pružanju izuzetne usluge našim klijentima.", 
+        "description2": "Naš tim stručnjaka razumije da je kupovina, prodaja ili iznajmljivanje nekretnine jedna od najvažnijih odluka u životu. Zato vam pružamo personalizovanu podršku kroz svaki korak procesa.", 
+        "description3": "Bilo da tražite savršen dom za svoju porodicu, investicionu nekretninu ili poslovni prostor, ovdje smo da vam pomognemo da pronađete idealnu nekretninu koja odgovara vašim potrebama i budžetu.",
+        "years_of_experience": "Godina iskustva"
+    },
+    "Contact": {
+        "title": "Kontaktirajte nas",
+        "subtitle": "Imate pitanja? Slobodno nas kontaktirajte",
+        "address": "Adresa",
+        "phone": "Telefon",
+        "email": "Email",
+        "working_hours": "Radno vrijeme",
+        "working_hours_value": "Pon - Pet: 09:00 - 17:00",
+        "name_form": "Vaše ime",
+        "email_form": "Email adresa",
+        "phone_form": "Telefon",
+        "message_form": "Poruka",
+        "submit_button": "Pošalji poruku",
+        "address_value": "Rimski Trg b.b., Podgorica, Crna Gora"
+    },
+    "Footer": {
+        "description": "Vaš pouzdan partner za nekretnine u Crnoj Gori. Profesionalna usluga posredovanja u prometu nekretnina.",
+        "fast_links": {
+            "title": "Brzi linkovi",
+            "home": "Početna",
+            "properties": "Nekretnine",
+            "about": "O nama",
+            "contact": "Kontakt"
+        },
+        "types_of_properties": {
+            "title": "Tipovi nekretnina",
+            "apartments": "Stanovi",
+            "houses": "Kuće",
+            "land": "Zemljišta",
+            "commercial": "Poslovni prostori"
+        },
+        "contact_info": {
+            "title": "Kontakt informacije"
+        },
+        "rights_reserved": "© 2026 Ej&Be Real Estate. Sva prava zadržana.",
+        "developed_by": "Izrada i razvoj web stranice:",
+        "address_value": "Rimski Trg b.b., Podgorica, Crna Gora"
+    },
+    "Property": {
+        "status_sale": "Prodaja",
+        "status_rent": "Iznajmljivanje",
+        "house": "Kuća",
+        "apartment": "Stan",
+        "land": "Zemljište",
+        "commercial": "Poslovni prostor",
+        "rooms": "Sobe",
+        "bathrooms": "Kupatila",
+        "floor": "Sprat",
+        "area": "Površina",
+        "year_built": "Godina izgradnje",
+        "parking": "Parking",
+        "heating": "Grijanje",
+        "subtitle": "Profesionalna agencija za nekretnine",
+        "working_hours": "Radno vrijeme",
+        "description": "Opis nekretnine",
+        "details": "Detalji"
+    },
+    "Properties": {
+        "title": "Nekretnine",
+        "subtitle": "Pregledajte naše dostupne nekretnine",
+        "filters": {
+            "status": {
+                "label": "Status",
+                "all": "Sve",
+                "sale": "Prodaja",
+                "rent": "Iznajmljivanje"
+            },
+            "type": {
+                "label": "Tip",
+                "all": "Svi tipovi",
+                "house": "Kuća",
+                "apartment": "Stan",
+                "land": "Zemljište",
+                "commercial": "Poslovni prostor"
+            },
+            "city": {
+                "label": "Grad",
+                "all": "Svi gradovi"
+            },
+            "rooms": {
+                "label": "Struktura",
+                "all": "Sve strukture",
+                "no_rooms": "Garsonjera",
+                "one_room": "Jednosoban",
+                "two_rooms": "Dvosoban",
+                "three_rooms": "Trosoban",
+                "four_rooms": "Četvorosoban",
+                "five_rooms": "Petosoban"
+            },
+            "min_price": {
+                "label": "Cijena od"
+            },
+            "max_price": {
+                "label": "Cijena do"
+            },
+            "search_button": "Pretraži",
+            "reset_button": "Resetuj filtere"
+        },
+        "show_more_button": "Prikaži više",
+        "loading": "Učitavanje..."
+    },
+    "Error": {
+        "title": "Greška",
+        "subtitle": "Nešto je pošlo po zlu",
+        "description": "Došlo je do neočekivane greške. Pokušajte ponovo ili se vratite na početnu stranicu.",
+        "home_button": "Povratak na početnu",
+        "retry_button": "Pokušaj ponovo"
+    },
+    "Not_Found": {
+        "title": "Stranica nije pronađena",
+        "subtitle": "Stranica koju tražite ne postoji, premještena je ili je uklonjena.",
+        "home_button": "Povratak na početnu"
+    }
+}

@@ -3,6 +3,7 @@
 import { connectDB } from '@/app/lib/mongoose';
 import { Property } from '@/app/models/Property';
 import { revalidatePath } from 'next/cache';
+import mongoose from "mongoose";
 
 //get limit from env
 const LIMIT = parseInt(process.env.LIMIT) || 3;
@@ -41,6 +42,9 @@ export async function createProperty(data) {
 export async function deleteProperty(id) {
   try{
     if(!id) return { success: false, error: 'ID is required' };
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null;
+    }
       await connectDB();
       await Property.findByIdAndDelete(id);
       revalidatePath('/admin/properties');
@@ -54,6 +58,9 @@ export async function deleteProperty(id) {
 // Update
 export async function updateProperty(id, data) {
   try{
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null;
+    }
     await connectDB();
     await Property.findByIdAndUpdate(id, data);
     return { success: true };
@@ -66,6 +73,9 @@ export async function updateProperty(id, data) {
 export async function getPropertyById(id) {
   try{
     if(!id) return null;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null;
+    }
     await connectDB();
     const property = await Property.findById(id).lean();
     if (!property) return null;
@@ -87,7 +97,7 @@ export async function getFeaturedProperties() {
   }
 }
 
-export async function getDashboardData(query) {
+export async function getDashboardData() {
   try{
     await connectDB();
     const totalProperties = await Property.countDocuments();

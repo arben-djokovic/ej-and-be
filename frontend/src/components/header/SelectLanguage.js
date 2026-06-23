@@ -1,23 +1,46 @@
-import React from 'react'
+"use client";
 
-export const SelectLanguage = ({ onClick }) => {
-    const [selectedLanguage, setSelectedLanguage] = React.useState("Montenegro")
+import React from "react";
+
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
+
+export const SelectLanguage = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // aktivni locale iz URL-a
+  const locale = useLocale();
+
+  const handleChangeLanguage = (e) => {
+    const nextLocale = e.target.value;
+
+    router.replace(pathname, { locale: nextLocale });
+  };
+
   return (
-    <div className='w-auto md:w-42.5' onClick={onClick}>
-        <select className='bg-transparent text-white selectLanguage' name="select" id="selectLang" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
-            <option className={`text-black ${selectedLanguage === "Montenegro" ? "bg-gray-300" : ""}`} value="Montenegro">
-                🇲🇪 Crnogorski
-            </option>
-            <option className={`text-black ${selectedLanguage === "English" ? "bg-gray-300" : ""}`} value="English">
-                🇬🇧 English
-            </option>
-            <option className={`text-black ${selectedLanguage === "Turkish" ? "bg-gray-300" : ""}`} value="Turkish">
-                🇹🇷 Türkçe
-            </option>
-            <option className={`text-black ${selectedLanguage === "Russian" ? "bg-gray-300" : ""}`} value="Russian">
-                🇷🇺 Русский
-            </option>
-        </select>
+    <div className="w-auto md:w-42.5">
+      <select
+        className="bg-transparent text-white selectLanguage"
+        value={locale}
+        onChange={handleChangeLanguage}
+      >
+        <option className="text-black" value="me">
+          🇲🇪 Crnogorski
+        </option>
+
+        <option className="text-black" value="en">
+          🇬🇧 English
+        </option>
+
+        <option className="text-black" value="tr">
+          🇹🇷 Türkçe
+        </option>
+
+        <option className="text-black" value="ru">
+          🇷🇺 Русский
+        </option>
+      </select>
     </div>
-  )
-}
+  );
+};

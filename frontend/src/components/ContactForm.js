@@ -1,8 +1,10 @@
 'use client'
 import React from "react";
 import { Button } from "./Button";
+import { useTranslations } from "next-intl";
 
 export default function ContactForm() {
+  const t = useTranslations("Contact");
     const handleSubmit = (e) => {
       e.preventDefault();
       // Handle form submission logic here
@@ -15,7 +17,7 @@ export default function ContactForm() {
           htmlFor="name"
           className="block text-sm font-medium text-[#1a2744] mb-2"
         >
-          Vaše ime
+          {t("name_form")}
         </label>
         <input
           id="name"
@@ -34,7 +36,7 @@ export default function ContactForm() {
           htmlFor="email"
           className="block text-sm font-medium text-[#1a2744] mb-2"
         >
-          Email adresa
+          {t("email_form")}
         </label>
         <input
           id="email"
@@ -53,7 +55,7 @@ export default function ContactForm() {
           htmlFor="phone"
           className="block text-sm font-medium text-[#1a2744] mb-2"
         >
-          Telefon
+          {t("phone_form")}
         </label>
         <input
           id="phone"
@@ -71,7 +73,7 @@ export default function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-[#1a2744] mb-2"
         >
-          Poruka
+          {t("message_form")}
         </label>
         <textarea
           id="message"
@@ -86,10 +88,11 @@ export default function ContactForm() {
       </div>
 
       <Button
+        link=""
         type="submit"
         className="w-full bg-[#c9a962] hover:bg-[#b8944f] text-white py-3 text-base"
       >
-       <p className="py-1.5 px-4">Pošalji poruku</p> 
+       <p className="py-1.5 px-4">{t("submit_button")}</p> 
       </Button>
     </form>
   );

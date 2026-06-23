@@ -20,11 +20,19 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import { getLocalizedText, getPropertyTypeLabel } from '../app/resolver';
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { useLocale, useTranslations } from "next-intl";
 
 export function PropertyDetailView( { property } ) {
+
+  const locale = useLocale();
+  const i18n = getLocalizedText(property, locale);
+  const t = useTranslations('Property');
+  const typeLabel = getPropertyTypeLabel(property?.type, locale);
+
   return (
     <div className="bg-background">
       {/* Image Gallery */}
@@ -68,7 +76,7 @@ export function PropertyDetailView( { property } ) {
                    : 'bg-[#1a2744] text-white'
                   }`}
               >
-                {property?.status === 'sale' ? 'Prodaja' : 'Izdavanje'}
+                {property?.status === 'sale' ? t('status_sale') : t('status_rent')}
               </span>
             </div>
           </div>
@@ -83,7 +91,7 @@ export function PropertyDetailView( { property } ) {
             <div>
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <span className="bg-[#1a2744]/10 text-[#1a2744] px-3 py-1 rounded-full text-sm font-medium">
-                  {property?.type}
+                  {typeLabel}
                 </span>
                 <span className="flex items-center gap-1">
                   <MapPin className="h-4 w-4" />
@@ -91,9 +99,9 @@ export function PropertyDetailView( { property } ) {
                 </span>
               </div>
               <h1 className="font-serif text-3xl md:text-4xl font-bold text-[#1a2744] mb-4">
-                {property?.title}
+                {i18n.title}
               </h1>
-              <p className="text-3xl font-bold text-[#c9a962]">{property?.price}</p>
+              <p className="text-3xl font-bold text-[#c9a962]">{property?.price}€</p>
             </div>
 
             {/* Quick Stats */}
@@ -106,24 +114,24 @@ export function PropertyDetailView( { property } ) {
               <div className="bg-muted/50 rounded-xl p-4 text-center">
                 <Bed className="h-6 w-6 mx-auto mb-2 text-[#c9a962]" />
                 <p className="text-2xl font-bold text-[#1a2744]">{property?.rooms}</p>
-                <p className="text-sm text-muted-foreground">Sobe</p>
+                <p className="text-sm text-muted-foreground">{t('rooms')}</p>
               </div>
               <div className="bg-muted/50 rounded-xl p-4 text-center">
                 <Bath className="h-6 w-6 mx-auto mb-2 text-[#c9a962]" />
                 <p className="text-2xl font-bold text-[#1a2744]">{property?.bathrooms}</p>
-                <p className="text-sm text-muted-foreground">Kupatila</p>
+                <p className="text-sm text-muted-foreground">{t('bathrooms')}</p>
               </div>
               <div className="bg-muted/50 rounded-xl p-4 text-center">
                 <Building className="h-6 w-6 mx-auto mb-2 text-[#c9a962]" />
                 <p className="text-2xl font-bold text-[#1a2744]">{property?.floor}/{property?.total_floors}</p>
-                <p className="text-sm text-muted-foreground">Sprat</p>
+                <p className="text-sm text-muted-foreground">{t('floor')}</p>
               </div>
             </div>
 
             {/* Description */}
             <div>
               <h2 className="font-serif text-2xl font-bold text-[#1a2744] mb-4">
-                Opis nekretnine
+                {t('description')}
               </h2>
               <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
                 {property?.description}
@@ -133,13 +141,13 @@ export function PropertyDetailView( { property } ) {
             {/* Details */}
             <div>
               <h2 className="font-serif text-2xl font-bold text-[#1a2744] mb-4">
-                Detalji
+                {t('details')}
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
                 <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-xl">
                   <Maximize className="h-5 w-5 text-[#c9a962]" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Površina</p>
+                    <p className="text-sm text-muted-foreground">{t('area')}</p>
                     <p className="font-semibold text-[#1a2744]">{property?.area} m²</p>
                   </div>
                 </div>
@@ -147,7 +155,7 @@ export function PropertyDetailView( { property } ) {
                   <Calendar className="h-5 w-5 text-[#c9a962]" />
                   <div>
                     <p className="text-sm text-muted-foreground">
-                      Godina izgradnje
+                      {t('year_built')}
                     </p>
                     <p className="font-semibold text-[#1a2744]">{property?.year_built}</p>
                   </div>
@@ -155,14 +163,14 @@ export function PropertyDetailView( { property } ) {
                 <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-xl">
                   <Car className="h-5 w-5 text-[#c9a962]" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Parking</p>
+                    <p className="text-sm text-muted-foreground">{t('parking')}</p>
                     <p className="font-semibold text-[#1a2744]">{property?.parking ? 'da' : 'ne'}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-xl">
                   <Flame className="h-5 w-5 text-[#c9a962]" />
                   <div>
-                    <p className="text-sm text-muted-foreground">Grijanje</p>
+                    <p className="text-sm text-muted-foreground">{t('heating')}</p>
                     <p className="font-semibold text-[#1a2744]">{property?.heating ? 'da' : 'ne'}</p>
                   </div>
                 </div>
@@ -181,7 +189,7 @@ export function PropertyDetailView( { property } ) {
                   Ej&Be Real Estate
                 </h3>
                 <p className="text-muted-foreground text-sm">
-                  Profesionalna agencija za nekretnine
+                  {t('subtitle')}
                 </p>
               </div>
 
@@ -208,7 +216,7 @@ export function PropertyDetailView( { property } ) {
                   <Clock className="h-5 w-5 text-[#c9a962]" />
                   <div>
                     <p className="text-sm text-muted-foreground">
-                      Radno vrijeme
+                      {t('working_hours')}
                     </p>
                     <p className="font-medium text-[#1a2744]">09:00 - 18:00</p>
                   </div>

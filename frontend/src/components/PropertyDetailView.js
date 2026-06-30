@@ -52,9 +52,7 @@ export function PropertyDetailView( { property } ) {
         {property?.images.length === 0 && (
           <SwiperSlide>
             <div className="h-full w-full flex items-center justify-center">
-              <div className="h-[90%] w-[90%] rounded-lg bg-gray-100 flex items-center justify-center">
-                <Building2 className="h-6 w-6 text-gray-400" />
-              </div>
+              <img className="h-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL3-VV39NH7Ks1Xqz2JT5GdG_x2BR6MImc5gq_CTv9Ag&s=10" />
             </div>
           </SwiperSlide>
         )}

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import { PropertyForm } from '@/components/admin/PropertyForm,'
+import { PropertyForm } from '@/components/admin/PropertyForm'
 import { getPropertyById } from '@/app/actions/PropertyActions'
 
 export default async function AdminPropertyPage({ params }) {

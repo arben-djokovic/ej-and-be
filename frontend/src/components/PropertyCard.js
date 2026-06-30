@@ -17,7 +17,7 @@ export const PropertyCard = ({ property }) => {
         {/* Image Container */}
         <div className="relative h-56 overflow-hidden">
           <img
-            src={property.images[0]?.url || 'https://via.placeholder.com/400x300?text=No+Image'} // fallback ako nema slika
+            src={property.images[0]?.url || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL3-VV39NH7Ks1Xqz2JT5GdG_x2BR6MImc5gq_CTv9Ag&s=10'} // fallback ako nema slika
             alt='Property'
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />

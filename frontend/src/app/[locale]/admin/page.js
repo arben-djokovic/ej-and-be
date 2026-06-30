@@ -24,7 +24,6 @@ export default async function AdminDashboard() {
   }
 
   const formatDate = (date) => {
-    console.log('formatDate input:', date);
     return new Date(date).toLocaleDateString('sr-Latn-ME', {
       day: '2-digit',
       month: '2-digit',
@@ -61,7 +60,6 @@ export default async function AdminDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat, i) => {
           const Icon = stat.icon
-          console.log(recentProperties[0]);
           return (
             <div key={i} className="bg-white rounded-xl shadow-sm p-6">
               <div className="flex items-center gap-4">

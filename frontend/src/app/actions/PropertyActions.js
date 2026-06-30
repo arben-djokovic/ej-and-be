@@ -19,7 +19,7 @@ export async function getProperties({ page, limit = LIMIT, status, type, city, r
   if (!!rooms && rooms !== "all") query.rooms = rooms;
   if (minPrice) query.price = { ...query.price, $gte: minPrice };
   if (maxPrice) query.price = { ...query.price, $lte: maxPrice };
-  console.log('Filters:', query);
+  
   const properties = await Property.find(query).sort({ createdAt: -1, _id: -1 }).limit(totalLimit).lean();
   const totalCount = await Property.find(query).countDocuments();
   const hasMore = totalCount > properties.length;

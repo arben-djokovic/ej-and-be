@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { Button } from "./Button";
 import { RotateCcw, Search } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation"; 
 import { useTranslations } from "next-intl";
+import { cities } from "@/proxy";
 
 export const PropertiesFilters = ({ params, setPage }) => {
   const t = useTranslations("Properties");
@@ -16,7 +16,7 @@ export const PropertiesFilters = ({ params, setPage }) => {
     minPrice: params.minPrice || undefined,
     maxPrice: params.maxPrice || undefined,
   });
-  const cities = ["Sarajevo", "Mostar", "Banja Luka", "Tuzla", "Zenica"];
+
 
   const handleReset = () => {
     setFilters({
@@ -166,12 +166,12 @@ export const PropertiesFilters = ({ params, setPage }) => {
               <Search className="h-4 w-4" />
               {t("filters.search_button")}  
             </div>
-            <Button link="#" variant="outline">
+            <div className="cursor-pointer inline-flex items-center gap-3 bg-[#c9a962] text-white rounded-lg font-semibold hover:bg-[#b8944f] transition-colors text-md">
               <div onClick={handleReset} className="gap-2 py-2 px-3 flex items-center text-sm ">
                 <RotateCcw className="h-4 w-4" />
                 {t("filters.reset_button")}
               </div>
-            </Button>
+            </div>
           </div>
         </div>
       </div>

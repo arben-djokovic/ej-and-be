@@ -1,6 +1,14 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { redirect } from 'next/navigation'
+import { getSession } from '@/app/actions/AuthActions'
 
-export default async function AdminLayout({children}) {
+
+export default async function AdminLayout({ children }) {
+  const session = await getSession()
+
+  if (!session) {
+    redirect('/login')
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex">

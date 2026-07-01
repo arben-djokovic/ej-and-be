@@ -14,6 +14,7 @@ import {
   ArrowLeftCircle
 } from 'lucide-react'
 import { useState } from 'react'
+import { logout } from '@/app/actions/AuthActions'
 
 
 const navItems = [
@@ -27,6 +28,8 @@ export function AdminSidebar({ user }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleLogout = async () => {
+    console.log("logout")
+    logout()
   }
 
   return (<>
@@ -87,7 +90,7 @@ export function AdminSidebar({ user }) {
 
         <div className="flex items-center gap-3 px-4 py-2 text-white/50 text-sm">
           <User className="h-4 w-4" />
-          <span className="truncate">beni@gmail.com</span>
+          <span className="truncate">admin@admin.me</span>
         </div>
 
         <button

@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { Eye, EyeOff, Lock, Mail } from 'lucide-react'
+import { Eye, EyeOff, Lock, Mail, Loader2 } from 'lucide-react'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
+import { login } from '@/app/actions/AuthActions'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -14,12 +15,24 @@ export default function LoginPage() {
 
   const handleLogin = async (e) => {
     e.preventDefault()
+    setLoading(true)
+    setError('')
+
+    const formData = new FormData()
+    formData.append('email', email)
+    formData.append('password', password)
+
+    const result = await login(formData)
+
+    if (result?.error) {
+      setError(result.error)
+      setLoading(false)
+    }
   }
 
   return (
     <div className="min-h-screen bg-[#1a2744] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        {/* Logo */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-block">
             <Image
@@ -33,7 +46,7 @@ export default function LoginPage() {
           <p className="text-white/60 mt-4">Admin Panel</p>
         </div>
 
-        {/* Login Card */}
+
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           <h1 className="font-serif text-2xl font-bold text-[#1a2744] text-center mb-6">
             Prijava
@@ -90,8 +103,9 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-10 rounded-lg cursor-pointer bg-[#c9a962] hover:bg-[#b8944f] text-white font-semibold"
+              className="w-full h-10 rounded-lg cursor-pointer bg-[#c9a962] hover:bg-[#b8944f] text-white font-semibold flex items-center justify-center gap-2 disabled:opacity-70"
             >
+              {loading && <Loader2 className="h-4 w-4 animate-spin" />}
               {loading ? 'Prijava...' : 'Prijavi se'}
             </button>
           </form>

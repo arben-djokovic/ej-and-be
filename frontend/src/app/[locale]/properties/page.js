@@ -5,6 +5,13 @@ import ShowProperties from '@/components/properties/ShowProperties'
 import { getProperties } from '@/app/actions/PropertyActions'
 import { getTranslations } from 'next-intl/server'
 
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Properties" });
+
+  return { title: t("title") };
+}
+
 export default async function Properties({ searchParams }) {
   const t = await getTranslations("Properties");
   let data;

@@ -4,6 +4,12 @@ import Link from 'next/link'
 import { PropertyForm } from '@/components/admin/PropertyForm'
 import { getPropertyById } from '@/app/actions/PropertyActions'
 
+export async function generateMetadata({ params }) {
+  const { id } = await params
+
+  return { title: id === 'new' ? 'Dodaj nekretninu' : 'Izmijeni nekretninu' }
+}
+
 export default async function AdminPropertyPage({ params }) {
   const { id } = await params
   const mode = id === 'new' ? 'create' : 'edit'

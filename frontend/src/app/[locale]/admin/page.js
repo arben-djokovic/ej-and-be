@@ -3,6 +3,10 @@ import { AdminHeader } from '@/components/admin/AdminHeader';
 import { Building2, TrendingUp, Eye, Plus } from 'lucide-react'
 import Link from 'next/link'
 
+export const metadata = {
+  title: 'Dashboard',
+}
+
 export default async function AdminDashboard() {
     let data
   try {

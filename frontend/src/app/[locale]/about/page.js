@@ -7,6 +7,13 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import React from "react";
 
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "About" });
+
+  return { title: t("title") };
+}
+
 export default async function About() {
 
   const t = await getTranslations("About");

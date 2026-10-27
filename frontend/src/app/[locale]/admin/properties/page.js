@@ -4,6 +4,10 @@ import { DeletePropertyButton } from '@/components/admin/DeletePropertyButton'
 import { Building2, Plus, Pencil, Eye } from 'lucide-react'
 import Link from 'next/link'
 
+export const metadata = {
+  title: 'Nekretnine',
+}
+
 export default async function AdminPropertiesPage() {
   let properties = []
 

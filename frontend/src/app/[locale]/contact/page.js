@@ -6,6 +6,13 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import React from "react";
 
+export async function generateMetadata({ params }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Contact" });
+
+  return { title: t("title") };
+}
+
 export default async function Contact() {
   const t = await getTranslations("Contact");
   

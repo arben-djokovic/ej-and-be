@@ -1,4 +1,5 @@
 import { SignJWT, jwtVerify } from 'jose'
+import { cookies } from 'next/headers'
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET)
 
@@ -16,4 +17,11 @@ export async function verifyToken(token) {
   } catch {
     return null
   }
+}
+
+// Server actions are reachable directly by POST, so each one must check the session itself
+export async function requireAdmin() {
+  const token = (await cookies()).get('admin_token')?.value
+  const payload = token ? await verifyToken(token) : null
+  if (payload?.role !== 'admin') throw new Error('Unauthorized')
 }

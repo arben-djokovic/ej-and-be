@@ -4,9 +4,25 @@ import { connectDB } from '@/app/lib/mongoose';
 import { Property } from '@/app/models/Property';
 import { revalidatePath } from 'next/cache';
 import mongoose from "mongoose";
+import { requireAdmin } from '@/app/lib/auth';
 
 //get limit from env
 const LIMIT = parseInt(process.env.LIMIT) || 3;
+
+// Fields the admin form may write. Excludes _id and the timestamps, which the database manages.
+const EDITABLE_FIELDS = [
+  'title', 'title_en', 'title_tr', 'title_ru',
+  'description', 'description_en', 'description_tr', 'description_ru',
+  'price', 'status', 'type', 'city', 'address', 'area', 'rooms', 'bathrooms',
+  'floor', 'total_floors', 'year_built', 'parking', 'heating',
+  'images', 'featured', 'isActive',
+];
+
+function pickEditableFields(data) {
+  return Object.fromEntries(
+    Object.entries(data ?? {}).filter(([key]) => EDITABLE_FIELDS.includes(key))
+  );
+}
 
 // Dohvati sve
 export async function getProperties({ page, limit = LIMIT, status, type, city, rooms, minPrice, maxPrice }) {
@@ -29,8 +45,9 @@ export async function getProperties({ page, limit = LIMIT, status, type, city, r
 // Dodaj novu
 export async function createProperty(data) {
   try{
+    await requireAdmin();
     await connectDB();
-    const property = await Property.create(data);
+    const property = await Property.create(pickEditableFields(data));
     return { success: true, property: JSON.parse(JSON.stringify(property)) };
   }catch(err){
     console.error('Error creating property:', err);
@@ -41,6 +58,7 @@ export async function createProperty(data) {
 // Obrisi
 export async function deleteProperty(id) {
   try{
+    await requireAdmin();
     if(!id) return { success: false, error: 'ID is required' };
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return null;
@@ -58,11 +76,12 @@ export async function deleteProperty(id) {
 // Update
 export async function updateProperty(id, data) {
   try{
+    await requireAdmin();
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return null;
     }
     await connectDB();
-    await Property.findByIdAndUpdate(id, data);
+    await Property.findByIdAndUpdate(id, pickEditableFields(data));
     return { success: true };
   }catch(err){
     console.error('Error updating property:', err);
@@ -99,6 +118,7 @@ export async function getFeaturedProperties() {
 
 export async function getDashboardData() {
   try{
+    await requireAdmin();
     await connectDB();
     const totalProperties = await Property.countDocuments();
     const totalSales = await Property.countDocuments({ status: 'sale' });
